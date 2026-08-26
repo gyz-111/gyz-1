@@ -414,33 +414,25 @@
         }
 
         .download-options {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .download-option {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 40px 50px;
+            padding: 40px 36px;
             text-align: center;
-            min-width: 250px;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             transform: translateY(30px);
-        }
-
-        .download-option.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .download-option:hover {
-            background: var(--card-hover);
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .download-option h3 {
@@ -453,6 +445,18 @@
             font-size: 14px;
             color: var(--light-text);
             margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .download-option.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .download-option:hover {
+            background: var(--card-hover);
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
         }
 
         .download-option button {
@@ -607,8 +611,7 @@
             }
 
             .download-options {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: 1fr;
             }
         }
     </style>
