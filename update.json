@@ -3,6 +3,6 @@
   "versionName": "2.5",
   "date": "2026-08-26",
   "force": false,
-  "desc": "本次更新：\n1. 更换新的和风天气API密钥\n2. 修复在线升级后无法安装的问题（下载校验APK有效性）\n3. 移除API计数限制功能",
+  "desc": "本次更新：\n1. 修复在线升级后无法安装的问题（下载时校验APK有效性）\n2. 移除API计数限制功能\n3. 天气数据接口保持稳定",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
