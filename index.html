@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather_API - 实时天气预报程序</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4a90d9;
+            --primary-dark: #2d5a87;
+            --secondary-color: #67c23a;
+            --accent-color: #ff6b6b;
+            --bg-gradient-start: #1a1a2e;
+            --bg-gradient-end: #16213e;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-hover: rgba(255, 255, 255, 0.1);
+            --text-color: #fff;
+            --light-text: rgba(255, 255, 255, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            min-height: 100vh;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74, 144, 217, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--text-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInLeft 1s ease;
+        }
+
+        .hero h1 span {
+            color: var(--secondary-color);
+            -webkit-text-fill-color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--light-text);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInRight 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--secondary-color), #529b2e);
+            color: var(--text-color);
+            padding: 18px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 30px rgba(103, 194, 58, 0.3);
+            transition: all 0.3s ease;
+            animation: slideInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+            cursor: pointer;
+            border: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(103, 194, 58, 0.5);
+        }
+
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 80px;
+            position: relative;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:nth-child(1) { transition-delay: 0.1s; }
+        .feature-card:nth-child(2) { transition-delay: 0.2s; }
+        .feature-card:nth-child(3) { transition-delay: 0.3s; }
+        .feature-card:nth-child(4) { transition-delay: 0.4s; }
+        .feature-card:nth-child(5) { transition-delay: 0.5s; }
+        .feature-card:nth-child(6) { transition-delay: 0.6s; }
+
+        .feature-card:hover {
+            background: var(--card-hover);
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 5px 20px rgba(74, 144, 217, 0.3));
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .versions {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .versions-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .version-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateX(-30px);
+            cursor: pointer;
+        }
+
+        .version-item.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .version-item:hover {
+            background: var(--card-hover);
+            transform: translateX(10px);
+            border-color: var(--secondary-color);
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .version-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .version-date {
+            font-size: 14px;
+            color: var(--light-text);
+            background: rgba(103, 194, 58, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .version-changes {
+            font-size: 15px;
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        .usage {
+            padding: 80px 0;
+        }
+
+        .usage-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .step.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step:hover {
+            background: var(--card-hover);
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            box-shadow: 0 5px 20px rgba(74, 144, 217, 0.3);
+        }
+
+        .step h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .download-section {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(103, 194, 58, 0.05) 0%, transparent 70%);
+        }
+
+        .download-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .download-content p {
+            font-size: 18px;
+            color: var(--light-text);
+            margin-bottom: 40px;
+            animation: fadeInUp 0.6s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .download-option {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px 50px;
+            text-align: center;
+            min-width: 250px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .download-option.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .download-option:hover {
+            background: var(--card-hover);
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .download-option h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .download-option p {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .download-option button {
+            background: linear-gradient(45deg, var(--accent-color), #e63946);
+            color: var(--text-color);
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-option button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--light-text);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .download-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .download-option.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .network-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.6s ease 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .network-status.intranet {
+            background: rgba(103, 194, 58, 0.15);
+            color: var(--secondary-color);
+            border: 1px solid rgba(103, 194, 58, 0.3);
+        }
+
+        .network-status.internet {
+            background: rgba(255, 107, 107, 0.15);
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .network-status .status-icon {
+            font-size: 16px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Weather<span>_API</span></a>
+                <ul class="nav-links">
+                    <li><a href="#features">功能特点</a></li>
+                    <li><a href="#versions">版本历史</a></li>
+                    <li><a href="#usage">使用说明</a></li>
+                    <li><a href="#download">下载</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Weather_API <span>v0.0.6</span></h1>
+                <p>基于 C++ 开发的实时天气预报程序，支持全国城市查询和全球经纬度查询，数据来自和风天气API</p>
+                <button class="download-btn" onclick="downloadFile('Weather_API_v0.0.6.exe')">立即下载</button>
+                <p style="margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.5);" id="heroNetworkHint"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">功能特点</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>全球天气查询</h3>
+                    <p>支持通过经纬度查询全球任何地点的实时天气和7天预报</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏙️</div>
+                    <h3>全国城市查询</h3>
+                    <p>内置全国主要城市数据库，支持城市名称和拼音查询</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>详细天气信息</h3>
+                    <p>显示温度、体感温度、湿度、风速、气压、能见度、日出日落等信息</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>7天天气预报</h3>
+                    <p>提供未来7天的天气预报，包括最高温、最低温和天气状况</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💧</div>
+                    <h3>降水趋势图</h3>
+                    <p>以柱状图形式展示未来7天降水趋势，直观了解降雨情况</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚠️</div>
+                    <h3>天气预警</h3>
+                    <p>实时获取天气预警信息，有则显示无则隐藏，及时了解灾害天气</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>多次查询支持</h3>
+                    <p>支持连续多次查询，无需重新启动程序</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>自定义城市</h3>
+                    <p>提供批处理工具，可自行添加新城市数据并重新编译</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="versions" id="versions">
+        <div class="container">
+            <h2 class="section-title">版本历史</h2>
+            <div class="versions-list">
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v2.0.3</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>核心改进：</strong><br>
+                        • 移除自选API功能，仅使用Open-Meteo免费数据源<br>
+                        • 修复控制台乱码问题，程序标题显示"特供版"<br>
+                        • 修复API数据解析问题，确保温度、湿度等数据正常显示<br>
+                        • 移除第三方JSON库依赖，使用手动字符串解析<br>
+                        • 使用HTTP协议访问API，避免SSL证书问题<br>
+                        • 支持城市名称和经纬度查询，7天预报，降水趋势图
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v1.0.2</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>核心改进：</strong><br>
+                        • 完全重写代码，修复控制台乱码问题<br>
+                        • 修复Open-Meteo API数据解析问题，确保温度、湿度等数据正常显示<br>
+                        • 程序标题显示"特供版"，文字居中对齐<br>
+                        • 移除第三方JSON库依赖，使用手动字符串解析<br>
+                        • 使用HTTP协议访问API，避免SSL证书问题<br>
+                        • 优化gzip压缩数据处理
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v1.0.1</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>功能更新：</strong><br>
+                        • 完全重写版本，支持自定义API Key或使用Open-Meteo免费数据源<br>
+                        • 修复gzip压缩解析bug<br>
+                        • 支持城市名称和经纬度查询
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.6</span>
+                        <span class="version-date">2026-07-14</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>新增功能：</strong><br>
+                        • 添加降水趋势图，以柱状图形式展示未来7天降水量<br>
+                        • 添加天气预警信息，有则显示无则隐藏<br>
+                        • 支持和风天气预警API获取实时预警数据<br>
+                        • 优化7天预报显示，新增降水量列
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.5</span>
+                        <span class="version-date">2026-07-14</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>功能更新：</strong><br>
+                        • 添加城市数据批处理工具<br>
+                        • 支持自行添加新城市并重新编译<br>
+                        • 优化城市数据库管理
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.4</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>Bug修复：</strong><br>
+                        • 修复经纬度查询问题<br>
+                        • 优化错误提示信息<br>
+                        • 移除图片展示功能
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.3</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>功能更新：</strong><br>
+                        • 添加日出日落时间显示（仅实时天气）<br>
+                        • 优化界面对齐和显示效果<br>
+                        • 改进温度显示格式
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.2</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>功能更新：</strong><br>
+                        • 添加错误提示功能<br>
+                        • 支持城市名称和经纬度查询<br>
+                        • 支持连续多次查询<br>
+                        • 优化用户交互体验
+                    </div>
+                </div>
+                <div class="version-item">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.1</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>初始版本：</strong><br>
+                        • 集成和风天气API，支持每日1000次调用限制<br>
+                        • 支持全国城市查询<br>
+                        • 显示实时天气信息（温度、湿度、风速等）<br>
+                        • 提供7天天气预报
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="usage" id="usage">
+        <div class="container">
+            <h2 class="section-title">使用说明</h2>
+            <div class="usage-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>下载程序</h4>
+                    <p>下载 Weather_API_v0.0.6.exe 文件</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>运行程序</h4>
+                    <p>双击运行可执行文件</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>选择查询方式</h4>
+                    <p>输入1查询城市，输入2查询经纬度</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>查看结果</h4>
+                    <p>查看实时天气、7天预报、降水趋势和预警信息</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section" id="download">
+        <div class="container">
+            <div class="download-content">
+                <h2>下载最新版本</h2>
+                <p>选择您需要的版本进行下载</p>
+                <div id="networkStatus" class="network-status">
+                    <span class="status-icon">🔍</span>
+                    <span>正在检测网络环境...</span>
+                </div>
+                <div class="download-options">
+                    <div id="androidVersion" class="download-option">
+                        <h3>📱 Android APK</h3>
+                        <p>安卓手机应用，支持城市和经纬度查询</p>
+                        <button onclick="downloadFile('Weather_API.apk')">下载APK</button>
+                    </div>
+                    <div id="fullVersion" class="download-option">
+                        <h3>v0.0.6 完整版</h3>
+                        <p>内置API Key，每日1000次调用限制</p>
+                        <button onclick="downloadFile('Weather_API_v0.0.6.exe')">下载完整版</button>
+                    </div>
+                    <div id="specialVersion" class="download-option">
+                        <h3>特供版 v2.0.3</h3>
+                        <p>移除自选API功能，仅使用Open-Meteo免费数据源，修复乱码和API解析问题</p>
+                        <button onclick="downloadFile('weather_特供版_v2.0.3.exe')">下载特供版 v2.0.3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="versions" style="padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">📦 全版本下载</h2>
+            <div class="versions-list">
+                <div class="version-item" onclick="downloadFile('Weather_API.apk')">
+                    <div class="version-header">
+                        <span class="version-number">📱 Weather_API.apk</span>
+                        <span class="version-date">Android</span>
+                    </div>
+                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.6.exe')" id="ver006">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.6</span>
+                        <span class="version-date">2026-07-14</span>
+                    </div>
+                    <div class="version-changes">添加降水趋势图、天气预警信息、优化7天预报显示（完整版）</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('weather_特供版_v2.0.3.exe')">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v2.0.3</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">移除自选API功能，仅使用Open-Meteo免费数据源，修复乱码和API解析问题</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('weather_特供版_v1.0.2.exe')">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v1.0.2</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">完全重写代码，修复控制台乱码问题，修复Open-Meteo API数据解析问题，程序标题显示"特供版"</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('weather_特供版_v1.0.1.exe')">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v1.0.1</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">完全重写版本，支持自定义API Key或使用Open-Meteo免费数据源，修复gzip压缩解析bug</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('weather_特供版_v0.0.3.exe')">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v0.0.3</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">修复Open-Meteo gzip压缩解析bug</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('weather_特供版_v0.0.2.exe')">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v0.0.2</span>
+                        <span class="version-date">2026-07-15</span>
+                    </div>
+                    <div class="version-changes">初始特供版，支持自定义API Key或使用Open-Meteo免费数据源</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.5.exe')" id="ver005">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.5</span>
+                        <span class="version-date">2026-07-14</span>
+                    </div>
+                    <div class="version-changes">添加城市数据批处理工具，支持自行添加新城市并重新编译</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.4.exe')" id="ver004">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.4</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">修复经纬度查询问题，优化错误提示，移除图片展示功能</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.3.exe')" id="ver003">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.3</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">添加日出日落时间显示（仅实时天气），优化界面对齐</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.2.exe')" id="ver002">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.2</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">添加错误提示功能，支持城市名称和经纬度查询，支持多次查询</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.1.exe')" id="ver001">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.1</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">初始版本，集成和风天气API，支持每日1000次调用限制</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather 有图.exe')" id="verWithImage">
+                    <div class="version-header">
+                        <span class="version-number">Weather 有图版</span>
+                        <span class="version-date">旧版本</span>
+                    </div>
+                    <div class="version-changes">带有天气图标展示的旧版本，功能较精简</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#features">功能</a>
+                <a href="#versions">版本</a>
+                <a href="#usage">使用</a>
+                <a href="#download">下载</a>
+            </div>
+            <p>&copy; 2026 Weather_API. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let isIntranet = false;
+
+        function isIntranetAccess() {
+            const hostname = window.location.hostname.toLowerCase();
+            const protocol = window.location.protocol.toLowerCase();
+            
+            const intranetHostnames = ['localhost', '127.0.0.1', 'gyz', '192.168.0.105', '192.168.1.105'];
+            
+            if (intranetHostnames.includes(hostname)) {
+                return true;
+            }
+            
+            if (/^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
+                const parts = hostname.split('.').map(Number);
+                return (
+                    parts[0] === 10 ||
+                    (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) ||
+                    (parts[0] === 192 && parts[1] === 168) ||
+                    parts[0] === 127 ||
+                    hostname.startsWith('169.254.')
+                );
+            }
+            
+            return false;
+        }
+
+        function detectNetwork() {
+            const statusEl = document.getElementById('networkStatus');
+            const fullVersionEl = document.getElementById('fullVersion');
+            const androidVersionEl = document.getElementById('androidVersion');
+            
+            isIntranet = isIntranetAccess();
+            
+            if (isIntranet) {
+                statusEl.className = 'network-status intranet';
+                statusEl.innerHTML = '<span class="status-icon">🏠</span><span>内网访问 - 可下载所有版本</span>';
+                fullVersionEl.classList.remove('disabled');
+                androidVersionEl.classList.remove('disabled');
+                document.getElementById('heroNetworkHint').textContent = '🏠 内网访问 - 所有版本均可下载';
+                
+                document.querySelectorAll('.version-item').forEach(el => {
+                    el.classList.remove('disabled');
+                });
+            } else {
+                statusEl.className = 'network-status internet';
+                statusEl.innerHTML = '<span class="status-icon">🌐</span><span>公网访问 - 仅提供特供版下载</span>';
+                fullVersionEl.classList.add('disabled');
+                androidVersionEl.classList.add('disabled');
+                document.getElementById('heroNetworkHint').textContent = '🌐 公网访问 - 完整版和APK仅对内网开放';
+                
+                ['ver006', 'ver005', 'ver004', 'ver003', 'ver002', 'ver001', 'verWithImage'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('disabled');
+                });
+            }
+        }
+
+        function downloadFile(filename) {
+            let url;
+            if (isIntranet) {
+                // 内网环境：全部文件无限制下载
+                url = '天气预报全版本/' + filename;
+            } else {
+                // 公网环境：匹配文件名包含「特供版」即可放行
+                if (filename.includes('特供版')) {
+                    url = 'public/' + filename;
+                } else {
+                    alert('该版本仅对内网用户开放，请下载文件名带有「特供版」标识的程序！');
+                    return;
+                }
+            }
+            window.location.href = url;
+        }
+
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .version-item, .step, .download-option');
+            
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    element.classList.add('animate');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            detectNetwork();
+        });
+    </script>
+</body>
+</html>

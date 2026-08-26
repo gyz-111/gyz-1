@@ -1,0 +1,29 @@
+{
+  "name": "weather_api",
+  "version": "0.0.6",
+  "description": "天气API安卓应用",
+  "scripts": {
+    "dev:h5": "uni",
+    "build:h5": "uni build",
+    "dev:mp-weixin": "uni -p mp-weixin",
+    "build:mp-weixin": "uni build -p mp-weixin",
+    "dev:app-plus": "uni -p app-plus",
+    "build:app-plus": "uni build -p app-plus"
+  },
+  "dependencies": {
+    "@dcloudio/uni-app": "2.0.0-3090820221125001",
+    "@dcloudio/uni-components": "2.0.0-3090820221125001",
+    "@dcloudio/uni-h5": "2.0.0-3090820221125001",
+    "@dcloudio/uni-mp-weixin": "2.0.0-3090820221125001",
+    "vue": "^2.7.14"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "^2.0.8",
+    "@dcloudio/uni-automator": "2.0.0-3090820221125001",
+    "@dcloudio/uni-cli-shared": "2.0.0-3090820221125001",
+    "@dcloudio/uni-stacktracey": "2.0.0-3090820221125001",
+    "@dcloudio/vue-cli-plugin-uni": "2.0.0-3090820221125001",
+    "@types/node": "^18.11.0",
+    "typescript": "^4.9.3"
+  }
+}

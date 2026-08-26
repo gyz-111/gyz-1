@@ -1,0 +1,42 @@
+{
+    "name" : "Weather_API",
+    "appid" : "__UNI__B7CA7B9",
+    "description" : "天气API安卓应用",
+    "versionName" : "0.0.6",
+    "versionCode" : "6",
+    "transformPx" : false,
+    "h5" : {
+        "title" : "Weather_API",
+        "router" : {
+            "mode" : "hash",
+            "base" : "./"
+        }
+    },
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false
+        },
+        "usingComponents" : true
+    },
+    "app-plus" : {
+        "usingComponents" : true,
+        "modules" : {},
+        "distribute" : {
+            "android" : {
+                "permissions" : [
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\"/>"
+                ],
+                "minSdkVersion" : "21"
+            },
+            "ios" : {
+                "dSYMs" : false
+            }
+        }
+    }
+}
