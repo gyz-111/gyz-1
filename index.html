@@ -851,9 +851,14 @@
                 </div>
                 <div class="download-options">
                     <div id="androidVersion" class="download-option">
-                        <h3>📱 Android APK</h3>
-                        <p>安卓手机应用，支持城市和经纬度查询</p>
-                        <button onclick="downloadFile('Weather_API.apk')">下载APK</button>
+                        <h3>📱 安卓版 2.0（原生重制版）</h3>
+                        <p>原生安卓应用全新重制：实时天气、24小时温度曲线、未来7天预报、天气预警详情弹窗、自动定位到区县、内置全国城市坐标库、支持手动输入经纬度查询，彩云天气风格UI</p>
+                        <button onclick="downloadFile('Weather_API_安卓2.0.apk')">下载安卓版 2.0</button>
+                    </div>
+                    <div id="androidVersionV1" class="download-option">
+                        <h3>📱 安卓版 1.0（经典版）</h3>
+                        <p>经典安卓应用：支持城市和经纬度查询，实时天气、7天预报、天气预警展示</p>
+                        <button onclick="downloadFile('Weather_API_安卓1.0.apk')">下载安卓版 1.0</button>
                     </div>
                     <div id="fullVersion" class="download-option">
                         <h3>v0.0.6 完整版</h3>
@@ -874,12 +879,19 @@
         <div class="container">
             <h2 class="section-title">📦 全版本下载</h2>
             <div class="versions-list">
-                <div class="version-item" onclick="downloadFile('Weather_API.apk')">
+                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.0.apk')">
                     <div class="version-header">
-                        <span class="version-number">📱 Weather_API.apk</span>
+                        <span class="version-number">📱 安卓版 2.0（原生重制版）</span>
+                        <span class="version-date">2026-08-26</span>
+                    </div>
+                    <div class="version-changes">原生安卓全新重制：实时天气、24小时温度曲线、未来7天预报、天气预警详情弹窗、自动定位到区县、内置全国城市坐标库、支持手动输入经纬度查询，彩云天气风格UI</div>
+                </div>
+                <div class="version-item" onclick="downloadFile('Weather_API_安卓1.0.apk')">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓版 1.0（经典版）</span>
                         <span class="version-date">Android</span>
                     </div>
-                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警</div>
+                    <div class="version-changes">经典安卓应用：支持城市和经纬度查询，实时天气、7天预报、天气预警展示（原 Weather_API.apk）</div>
                 </div>
                 <div class="version-item" onclick="downloadFile('Weather_API_v0.0.6.exe')" id="ver006">
                     <div class="version-header">
@@ -1012,6 +1024,7 @@
             const statusEl = document.getElementById('networkStatus');
             const fullVersionEl = document.getElementById('fullVersion');
             const androidVersionEl = document.getElementById('androidVersion');
+            const androidVersionV1El = document.getElementById('androidVersionV1');
             
             isIntranet = isIntranetAccess();
             
@@ -1020,6 +1033,7 @@
                 statusEl.innerHTML = '<span class="status-icon">🏠</span><span>内网访问 - 可下载所有版本</span>';
                 fullVersionEl.classList.remove('disabled');
                 androidVersionEl.classList.remove('disabled');
+                if (androidVersionV1El) androidVersionV1El.classList.remove('disabled');
                 document.getElementById('heroNetworkHint').textContent = '🏠 内网访问 - 所有版本均可下载';
                 
                 document.querySelectorAll('.version-item').forEach(el => {
@@ -1030,6 +1044,7 @@
                 statusEl.innerHTML = '<span class="status-icon">🌐</span><span>公网访问 - 仅提供特供版下载</span>';
                 fullVersionEl.classList.add('disabled');
                 androidVersionEl.classList.add('disabled');
+                if (androidVersionV1El) androidVersionV1El.classList.add('disabled');
                 document.getElementById('heroNetworkHint').textContent = '🌐 公网访问 - 完整版和APK仅对内网开放';
                 
                 ['ver006', 'ver005', 'ver004', 'ver003', 'ver002', 'ver001', 'verWithImage'].forEach(id => {
