@@ -1,0 +1,8 @@
+{
+  "versionCode": 2,
+  "versionName": "2.1",
+  "date": "2026-08-26",
+  "force": false,
+  "desc": "本次更新：\n1. 修复城市搜索 HTTP 400 错误（支持义马等全部区县级城市）\n2. 温度数字居中显示优化\n3. 新增应用内自动检查更新功能",
+  "apk": "weatherall/Weather_API_安卓2.0.apk"
+}
