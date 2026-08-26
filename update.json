@@ -1,8 +1,8 @@
 {
-  "versionCode": 5,
-  "versionName": "2.4",
+  "versionCode": 6,
+  "versionName": "2.5",
   "date": "2026-08-26",
   "force": false,
-  "desc": "本次更新：\n1. 新增全局API计数保护，每日2000次上限\n2. 超出后自动拦截请求，次日自动恢复\n3. Gitee国内优先更新源",
+  "desc": "本次更新：\n1. 更换新的和风天气API密钥\n2. 修复在线升级后无法安装的问题（下载校验APK有效性）\n3. 移除API计数限制功能",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
