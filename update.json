@@ -1,8 +1,8 @@
 {
-  "versionCode": 3,
-  "versionName": "2.2",
+  "versionCode": 4,
+  "versionName": "2.3",
   "date": "2026-08-26",
   "force": false,
-  "desc": "本次更新：\n1. 新增 Gitee 国内更新源，无需VPN秒下载\n2. 修复城市搜索 HTTP 400 错误\n3. 温度数字居中显示优化",
+  "desc": "本次更新：\n1. 新增版本号显示，页面底部可手动检查更新\n2. Gitee 国内优先更新源，无VPN也能秒下载\n3. 修复城市搜索 HTTP 400 错误\n4. 温度数字居中显示优化",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
