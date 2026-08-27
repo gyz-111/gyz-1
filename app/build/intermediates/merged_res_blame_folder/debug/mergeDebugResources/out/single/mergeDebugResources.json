@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/layout_item_hourly.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/layout/item_hourly.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_temp_bar.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_temp_bar.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_gradient_day.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_gradient_day.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_card.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_card.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_warning.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_warning.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_life_icon.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_life_icon.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_aqi_level.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_aqi_level.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_ic_launcher_weather.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/ic_launcher_weather.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_gradient_night.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_gradient_night.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_pill_button.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_pill_button.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/layout_item_daily.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/layout/item_daily.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/layout_item_info.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/layout/item_info.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_gradient_snow.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_gradient_snow.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/xml_file_paths.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/xml/file_paths.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/layout_item_life_index.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/layout/item_life_index.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/layout_activity_main.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.caiyun.weather.app-debug-33:/drawable_bg_gradient_rain.xml.flat",
+        "source": "com.caiyun.weather.app-main-35:/drawable/bg_gradient_rain.xml"
+    }
+]

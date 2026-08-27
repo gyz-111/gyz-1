@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_cyan">#4FC3F7</color>
+    <color name="accent_orange">#FFB74D</color>
+    <color name="aqi_excellent">#00E676</color>
+    <color name="aqi_good">#4CAF50</color>
+    <color name="aqi_heavy_pollution">#F44336</color>
+    <color name="aqi_light_pollution">#FFEB3B</color>
+    <color name="aqi_moderate_pollution">#FF9800</color>
+    <color name="aqi_severe_pollution">#9C27B0</color>
+    <color name="bg_day_bottom">#0B1026</color>
+    <color name="bg_day_top">#1E3A8A</color>
+    <color name="card_bg">#1AFFFFFF</color>
+    <color name="card_bg_strong">#26FFFFFF</color>
+    <color name="curve_line">#FF4FC3F7</color>
+    <color name="divider">#14FFFFFF</color>
+    <color name="life_icon_bg">#1AFFFFFF</color>
+    <color name="temp_high">#FF7043</color>
+    <color name="temp_low">#4FC3F7</color>
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+    <color name="text_tertiary">#73FFFFFF</color>
+    <color name="warning_bg">#33FF6D00</color>
+    <color name="warning_border">#FFFF6D00</color>
+    <string name="api_error">接口错误</string>
+    <string name="api_limit_reached">今日API调用次数已达上限(%d)，请明天再试</string>
+    <string name="app_name">彩云天气</string>
+    <string name="city_not_found">未找到该城市</string>
+    <string name="daily_title">未来15天</string>
+    <string name="download_failed">下载失败: %s</string>
+    <string name="hourly_title">24小时预报</string>
+    <string name="input_coord">输入坐标查询</string>
+    <string name="install_unknown_sources">请允许安装未知来源应用</string>
+    <string name="latitude">纬度 (39.90)</string>
+    <string name="loading">加载中…</string>
+    <string name="locating">定位中…</string>
+    <string name="longitude">经度 (116.40)</string>
+    <string name="no_network">网络不可用</string>
+    <string name="parse_error">数据解析失败</string>
+    <string name="search_hint">搜索全国任意城市</string>
+    <string name="update_available">发现新版本 v%s</string>
+    <string name="update_failed">检查更新失败: %s</string>
+    <string name="update_latest">已是最新版本 v%s</string>
+    <string name="version_format">当前版本 v%s · 点击检查更新</string>
+    <string name="warning_title">天气预警</string>
+    <style name="AqiItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+    </style>
+    <style name="AqiLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_tertiary</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+    <style name="AqiValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="BtnPill">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:background">@drawable/bg_pill_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">13dp</item>
+        <item name="android:paddingRight">13dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="InfoCell">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+    </style>
+    <style name="InfoLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_tertiary</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+    <style name="InfoValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <style name="Theme.CaiyunWeather" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_gradient_night</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#FF0B1026</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

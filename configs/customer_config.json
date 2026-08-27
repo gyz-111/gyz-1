@@ -1,0 +1,18 @@
+{
+  "setting": {
+    "phone": {
+      "brand": "Samsung",
+      "code": "a53x",
+      "imei": "867139046479208",
+      "manufacturer": "Samsung",
+      "miit": "SM-A5360",
+      "model": "Galaxy A53 5G",
+      "vdid": "f4a51adf-a168-4d22-a02b-cb5724273f40"
+    },
+    "record": {
+      "time": {
+        "first": "0"
+      }
+    }
+  }
+}

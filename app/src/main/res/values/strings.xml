@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">彩云天气</string>
+    <string name="loading">加载中…</string>
+    <string name="locating">定位中…</string>
+    <string name="hourly_title">24小时预报</string>
+    <string name="daily_title">未来15天</string>
+    <string name="warning_title">天气预警</string>
+    <string name="input_coord">输入坐标查询</string>
+    <string name="longitude">经度 (116.40)</string>
+    <string name="latitude">纬度 (39.90)</string>
+    <string name="version_format">当前版本 v%s · 点击检查更新</string>
+    <string name="update_available">发现新版本 v%s</string>
+    <string name="update_latest">已是最新版本 v%s</string>
+    <string name="update_failed">检查更新失败: %s</string>
+    <string name="download_failed">下载失败: %s</string>
+    <string name="api_limit_reached">今日API调用次数已达上限(%d)，请明天再试</string>
+    <string name="install_unknown_sources">请允许安装未知来源应用</string>
+    <string name="city_not_found">未找到该城市</string>
+    <string name="search_hint">搜索全国任意城市</string>
+    <string name="no_network">网络不可用</string>
+    <string name="api_error">接口错误</string>
+    <string name="parse_error">数据解析失败</string>
+</resources>
