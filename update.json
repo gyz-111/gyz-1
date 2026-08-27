@@ -1,8 +1,8 @@
 {
-  "versionCode": 6,
-  "versionName": "2.5",
+  "versionCode": 7,
+  "versionName": "2.6",
   "date": "2026-08-26",
   "force": false,
-  "desc": "本次更新：\n1. 修复在线升级后无法安装的问题（下载时校验APK有效性）\n2. 移除API计数限制功能\n3. 天气数据接口保持稳定",
+  "desc": "本次更新：\n1. 进度条修复：首次下载显示不定进度，拿到长度后切百分比\n2. 下载源优化：jsdelivr优先（有长度、国内极快）\n3. Gitee下载修复，国内直连秒连\n4. 启动时每次检查更新，下拉刷新不再触发",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
