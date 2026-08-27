@@ -1,8 +1,8 @@
 {
-  "versionCode": 10,
-  "versionName": "2.7.2",
+  "versionCode": 8,
+  "versionName": "2.6.1",
   "date": "2026-08-26",
   "force": false,
-  "desc": "修复闪退：补充 CardView 依赖、补全 drawable 资源、修复布局引用",
+  "desc": "稳定版：修复 APK 直接安装失败（补充 drawable 资源），移除计数功能，修复升级安装失败",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
