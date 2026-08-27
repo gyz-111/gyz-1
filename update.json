@@ -1,8 +1,8 @@
 {
-  "versionCode": 8,
-  "versionName": "2.6.1",
-  "date": "2026-08-26",
+  "versionCode": 12,
+  "versionName": "2.8.0",
+  "date": "2026-08-27",
   "force": false,
-  "desc": "稳定版：修复 APK 直接安装失败（补充 drawable 资源），移除计数功能，修复升级安装失败",
+  "desc": "新增功能：天气背景动态切换、空气质量趋势图、生活指数详情页、预警推送通知、桌面小组件支持、多城市管理、离线缓存模式",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
