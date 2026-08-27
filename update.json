@@ -1,8 +1,8 @@
 {
-  "versionCode": 9,
-  "versionName": "2.7.1",
+  "versionCode": 8,
+  "versionName": "2.6.1",
   "date": "2026-08-26",
   "force": false,
-  "desc": "修复闪退问题，优化稳定性",
+  "desc": "修复 APK 直接安装失败问题（补充缺失 drawable 资源）",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
