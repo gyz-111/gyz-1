@@ -634,9 +634,9 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-<h1>Weather_API <span>v2.7.3</span></h1>
-        <p>原生安卓天气应用：实时天气、24小时温度曲线、未来7天预报、天气预警、空气质量、生活指数、日出日落、月相、15天预报，彩云天气风格UI</p>
-        <button class="download-btn" onclick="downloadFile('Weather_API_安卓2.0.apk')">下载安卓版 2.7.3</button>
+<h1>Weather_API <span>v2.6.1</span></h1>
+        <p>稳定版安卓天气应用：实时天气、7天预报、天气预警，数据来自和风天气API</p>
+        <button class="download-btn" onclick="downloadFile('Weather_API_安卓2.0.apk')">下载安卓版 2.6.1</button>
                 <p style="margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.5);" id="heroNetworkHint"></p>
             </div>
         </div>
@@ -696,19 +696,15 @@
 <div class="versions-list">
                 <div class="version-item">
                     <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.3（原生重制版）</span>
-                        <span class="version-date">2026-08-27</span>
+                        <span class="version-number">📱 安卓版 2.6.1（稳定版）</span>
+                        <span class="version-date">2026-08-26</span>
                     </div>
                     <div class="version-changes">
-                        <strong>v2.7.3 彻底修复闪退版：</strong><br>
-                        • 添加 CardView 依赖，修复启动闪退<br>
-                        • 布局 XML 补充 app: 命名空间，修复 CardView 属性解析<br>
-                        • 补全 drawable 资源：bg_life_icon、bg_aqi_level、bg_temp_bar<br>
-                        • 补全 19 个缺失字符串资源<br>
-                        • 生活指数 emoji 替换为文字，兼容低版本<br>
-                        • HourlyCurveView 补全三构造函数、onDraw 全链路 try-catch<br>
-                        • Layout XML 补充 xmlns:app 命名空间<br>
-                        • 补全 19 个缺失字符串资源
+                        <strong>稳定版修复：</strong><br>
+                        • 修复 APK 直接安装失败（补充缺失 drawable 资源）<br>
+                        • 移除计数限制功能<br>
+                        • 修复升级安装失败（下载校验APK有效性）<br>
+                        • 保持旧版 API Key 稳定
                     </div>
                 </div>
                 <div class="version-item">
@@ -900,9 +896,9 @@
                 </div>
                 <div class="download-options">
 <div id="androidVersion" class="download-option">
-                        <h3>📱 安卓版 2.7.3（原生重制版）</h3>
-                        <p>原生安卓全新重制：实时天气、24小时温度曲线、未来7天预报、天气预警详情弹窗、自动定位到区县、内置全国城市坐标库、支持手动输入经纬度查询，彩云天气风格UI</p>
-                        <button onclick="downloadFile('Weather_API_安卓2.0.apk')">下载安卓版 2.7.3</button>
+                        <h3>📱 安卓版 2.6.1（稳定版）</h3>
+                        <p>稳定版安卓应用：实时天气、7天预报、天气预警，修复安装失败问题</p>
+                        <button onclick="downloadFile('Weather_API_安卓2.0.apk')">下载安卓版 2.6.1</button>
                     </div>
                     <div id="androidVersionV1" class="download-option">
                         <h3>📱 安卓版 1.0（经典版）</h3>
@@ -910,7 +906,7 @@
                         <button onclick="downloadFile('Weather_API_安卓1.0.apk')">下载安卓版 1.0</button>
                     </div>
 <div id="fullVersion" class="download-option">
-                        <h3>v2.7.3 完整版</h3>
+                        <h3>v2.6.1 完整版</h3>
                         <p>内置API Key，每日1000次调用限制</p>
                         <button onclick="downloadFile('Weather_API_v0.0.6.exe')">下载完整版</button>
                     </div>
@@ -930,10 +926,10 @@
             <div class="versions-list">
                 <div class="version-item" onclick="downloadFile('Weather_API_安卓2.0.apk')">
                     <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.3（原生重制版）</span>
-                        <span class="version-date">2026-08-27</span>
+                        <span class="version-number">📱 安卓版 2.6.1（稳定版）</span>
+                        <span class="version-date">2026-08-26</span>
                     </div>
-                    <div class="version-changes">v2.7.3 彻底修复闪退版：添加 CardView 依赖、补充 app 命名空间、补全 drawable 资源、补全字符串资源、emoji 替换为文字、HourlyCurveView 健壮化、Layout XML 命名空间修复、字符串资源补全</div>
+                    <div class="version-changes">稳定版修复：修复 APK 直接安装失败、移除计数限制、修复升级安装失败</div>
                 </div>
                 <div class="version-item" onclick="downloadFile('Weather_API_安卓2.0.apk')">
                     <div class="version-header">
