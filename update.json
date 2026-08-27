@@ -1,8 +1,8 @@
 {
-  "versionCode": 7,
-  "versionName": "2.6",
+  "versionCode": 8,
+  "versionName": "2.7",
   "date": "2026-08-26",
   "force": false,
-  "desc": "本次更新：\n1. 进度条修复：首次下载显示不定进度，拿到长度后切百分比\n2. 下载源优化：jsdelivr优先（有长度、国内极快）\n3. Gitee下载修复，国内直连秒连\n4. 启动时每次检查更新，下拉刷新不再触发",
+  "desc": "本次更新：\n1. UI 全面美化：Material 卡片、动态渐变、圆角阴影\n2. 新增空气质量卡片（AQI、六项指标）\n3. 新增生活指数（穿衣、紫外线、洗车、运动等 12 类）\n3. 新增日出日落、月相、15天预报、温度范围条\n4. 24 小时曲线图优化\n5. 下载源 jsdelivr 优先，进度条百分比修复\n5. Gitee 下载修复，启动时检查更新",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
