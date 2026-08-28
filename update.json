@@ -1,8 +1,8 @@
 {
-  "versionCode": 12,
-  "versionName": "2.8.0",
+  "versionCode": 13,
+  "versionName": "2.8.1",
   "date": "2026-08-27",
   "force": false,
-  "desc": "新增功能：天气背景动态切换、空气质量趋势图、生活指数详情页、预警推送通知、桌面小组件支持、多城市管理、离线缓存模式",
+  "desc": "优化版本：关闭月相、日出日落、AQI、生活指数显示，优化核心天气功能体验，修复已知问题，提升稳定性",
   "apk": "weatherall/Weather_API_安卓2.0.apk"
 }
