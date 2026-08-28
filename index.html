@@ -40,7 +40,7 @@
         .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--secondary-color); transition: width 0.3s ease; }
         .nav-links a:hover { color: var(--text-color); }
         .nav-links a:hover::after { width: 100%; }
-        .hero { padding: 150px 0 100px; text-align: center; position: relative; overflow: hidden; }
+        .hero { padding: 120px 0 80px; text-align: center; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(74, 144, 217, 0.1) 0%, transparent 70%); border-radius: 50%; }
         .hero-content { position: relative; z-index: 1; }
         .hero h1 { font-size: 64px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(45deg, var(--text-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: slideInLeft 1s ease; }
@@ -94,7 +94,7 @@
         .download-option:hover { background: var(--card-hover); transform: translateY(-10px); border-color: var(--accent-color); }
         .download-option button { background: linear-gradient(45deg, var(--accent-color), #e63946); color: var(--text-color); padding: 12px 30px; font-size: 16px; font-weight: 600; border: none; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
         .download-option button:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4); }
-        .platforms { padding: 80px 0; }
+        .platforms { padding: 60px 0; }
         .platforms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
         .platform-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 30px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .platform-card:hover { background: var(--card-hover); transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
@@ -110,7 +110,6 @@
         .platform-badge.android { background: rgba(103, 194, 58, 0.2); color: #67c23a; border: 1px solid rgba(103, 194, 58, 0.3); }
         .platform-badge.windows { background: rgba(74, 144, 217, 0.2); color: #4a90d9; border: 1px solid rgba(74, 144, 217, 0.3); }
         .platform-badges { display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
-        .windows-intro .hero-content { text-align: center; }
         /* 密码模态框 */
         .password-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 10000; animation: fadeIn 0.3s ease; }
         .password-modal.active { display: flex; }
@@ -190,25 +189,12 @@
         </div>
     </header>
 
-    <!-- Windows 介绍 -->
-    <section class="hero windows-intro">
+    <!-- 主介绍 -->
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Weather_API <span>v2.9.0</span></h1>
-                <p>Windows 原生天气应用，支持 Windows 10/11，Fluent Design 风格，系统托盘常驻、任务栏预览、启动自动运行、后台自动更新、多显示器支持、高 DPI 适配</p>
-                <div class="platform-badges">
-                    <span class="platform-badge windows">🪟 Windows</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 跨平台介绍 -->
-    <section class="hero cross-platform-intro">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Weather_API <span>v2.9.0</span></h1>
-                <p>跨平台天气预报程序：支持 Android 与 Windows，实时天气、24小时温度曲线、15天预报，彩云天气风格UI</p>
+                <p>跨平台天气预报程序：支持 Android 与 Windows，实时天气、24小时温度曲线、15天预报，彩云天气风格UI，v2.9.0 美化版本</p>
                 <div class="platform-badges">
                     <span class="platform-badge android">📱 Android</span>
                     <span class="platform-badge windows">🪟 Windows</span>
