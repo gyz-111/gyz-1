@@ -1,8 +1,8 @@
 {
-  "versionCode": 13,
-  "versionName": "2.8.1",
-  "date": "2026-08-27",
+  "versionCode": 14,
+  "versionName": "2.9.0",
+  "date": "2026-08-28",
   "force": false,
-  "desc": "优化版本：关闭月相、日出日落、AQI、生活指数显示，优化核心天气功能体验，修复已知问题，提升稳定性",
-  "apk": "weatherall/Weather_API_安卓2.0.apk"
+  "desc": "v2.9.0 美化版本：UI全面升级，更精美的渐变色、更大的温度显示、优化卡片设计，移除月相/AQI/日出日落/生活指数，提升稳定性",
+  "apk": "weatherall/Weather_API_安卓2.9.0.apk"
 }
