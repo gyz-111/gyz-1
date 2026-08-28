@@ -53,7 +53,7 @@
         .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .feature-card { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(30px); }
-        .feature-card.animate { opacity: 1; transform: translateY(0); }
+        .feature-card.show { opacity: 1; transform: translateY(0); }
         .feature-card:nth-child(1) { transition-delay: 0.1s; }
         .feature-card:nth-child(2) { transition-delay: 0.2s; }
         .feature-card:nth-child(3) { transition-delay: 0.3s; }
@@ -67,7 +67,7 @@
         .versions { padding: 80px 0; background: rgba(0, 0, 0, 0.2); }
         .versions-list { max-width: 900px; margin: 0 auto; }
         .version-item { background: var(--card-bg); border-radius: 15px; padding: 30px; margin-bottom: 20px; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateX(-30px); cursor: pointer; }
-        .version-item.animate { opacity: 1; transform: translateX(0); }
+        .version-item.show { opacity: 1; transform: translateX(0); }
         .version-item:hover { background: var(--card-hover); transform: translateX(10px); border-color: var(--secondary-color); }
         .version-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .version-number { font-size: 20px; font-weight: 700; color: var(--secondary-color); }
@@ -76,7 +76,7 @@
         .usage { padding: 80px 0; }
         .usage-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
         .step { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(30px); }
-        .step.animate { opacity: 1; transform: translateY(0); }
+        .step.show { opacity: 1; transform: translateY(0); }
         .step:hover { background: var(--card-hover); transform: translateY(-8px); border-color: var(--primary-color); }
         .step-number { width: 50px; height: 50px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: var(--text-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; margin: 0 auto 25px; box-shadow: 0 5px 20px rgba(74, 144, 217, 0.3); }
         .step h4 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text-color); }
@@ -90,13 +90,14 @@
         .download-option { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 36px; text-align: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(30px); display: flex; flex-direction: column; align-items: center; }
         .download-option h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-color); }
         .download-option p { font-size: 14px; color: var(--light-text); margin-bottom: 20px; flex-grow: 1; }
-        .download-option.animate { opacity: 1; transform: translateY(0); }
+        .download-option.show { opacity: 1; transform: translateY(0); }
         .download-option:hover { background: var(--card-hover); transform: translateY(-10px); border-color: var(--accent-color); }
         .download-option button { background: linear-gradient(45deg, var(--accent-color), #e63946); color: var(--text-color); padding: 12px 30px; font-size: 16px; font-weight: 600; border: none; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
         .download-option button:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4); }
         .platforms { padding: 60px 0; }
         .platforms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
-        .platform-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 30px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .platform-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 30px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translateY(30px); }
+        .platform-card.show { opacity: 1; transform: translateY(0); }
         .platform-card:hover { background: var(--card-hover); transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
         .platform-card.android { border-left: 4px solid #67c23a; }
         .platform-card.windows { border-left: 4px solid #4a90d9; }
@@ -672,17 +673,17 @@
 
         // 滚动动画
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.feature-card, .version-item, .step, .download-option, .download-category');
+            const elements = document.querySelectorAll('.feature-card, .version-item, .step, .download-option, .platform-card');
             elements.forEach(element => {
-                const rect = element.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
-                    element.classList.add('animate');
+                if (!element.classList.contains('show')) {
+                    element.classList.add('show');
                 }
             });
         }
 
         window.addEventListener('load', () => {
             animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll, { passive: true });
             document.querySelectorAll('[onclick^="requestDownload"]').forEach(btn => {
                 btn.onclick = function(e) {
                     e.preventDefault();
