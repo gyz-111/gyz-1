@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather_API - 实时天气预报程序</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary-color: #4a90d9;
             --primary-dark: #2d5a87;
@@ -18,13 +13,12 @@
             --accent-color: #ff6b6b;
             --bg-gradient-start: #1a1a2e;
             --bg-gradient-end: #16213e;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-hover: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255,255,255,0.05);
+            --card-hover: rgba(255,255,255,0.1);
             --text-color: #fff;
-            --light-text: rgba(255, 255, 255, 0.7);
-            --border-color: rgba(255, 255, 255, 0.1);
+            --light-text: rgba(255,255,255,0.7);
+            --border-color: rgba(255,255,255,0.1);
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
@@ -32,585 +26,128 @@
             color: var(--text-color);
             overflow-x: hidden;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(20px);
-            padding: 15px 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(26,26,46,0.9); backdrop-filter: blur(20px);
+            padding: 15px 0; z-index: 1000; border-bottom: 1px solid var(--border-color);
         }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-color);
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: var(--secondary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-color);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            padding: 150px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(74, 144, 217, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 64px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--text-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideInLeft 1s ease;
-        }
-
-        .hero h1 span {
-            color: var(--secondary-color);
-            -webkit-text-fill-color: var(--secondary-color);
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: var(--light-text);
-            margin-bottom: 50px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: slideInRight 1s ease 0.2s;
-            animation-fill-mode: both;
-        }
-
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--text-color); text-decoration: none; letter-spacing: 2px; }
+        .logo span { color: var(--secondary-color); }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { color: var(--light-text); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--secondary-color); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--text-color); }
+        .nav-links a:hover::after { width: 100%; }
+        .hero { padding: 150px 0 100px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(74,144,217,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 64px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(45deg, var(--text-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: slideInLeft 1s ease; }
+        .hero h1 span { color: var(--secondary-color); -webkit-text-fill-color: var(--secondary-color); }
+        .hero p { font-size: 20px; color: var(--light-text); margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; animation: slideInRight 1s ease 0.2s; animation-fill-mode: both; }
         .download-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--secondary-color), #529b2e);
-            color: var(--text-color);
-            padding: 18px 50px;
-            font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 5px 30px rgba(103, 194, 58, 0.3);
-            transition: all 0.3s ease;
-            animation: slideInUp 1s ease 0.4s;
-            animation-fill-mode: both;
-            cursor: pointer;
-            border: none;
+            display: inline-block; background: linear-gradient(45deg, var(--secondary-color), #529b2e);
+            color: var(--text-color); padding: 18px 50px; font-size: 18px; font-weight: 600;
+            text-decoration: none; border-radius: 50px; box-shadow: 0 5px 30px rgba(103,194,58,0.3);
+            transition: all 0.3s ease; animation: slideInUp 1s ease 0.4s; animation-fill-mode: both; cursor: pointer; border: none;
         }
-
-        .download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(103, 194, 58, 0.5);
-        }
-
-        .features {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 80px;
-            position: relative;
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border-radius: 2px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .feature-card.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .download-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(103,194,58,0.5); }
+        .features { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 40px; font-weight: 700; margin-bottom: 80px; position: relative; animation: fadeInUp 0.6s ease; }
+        .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateY(30px); }
+        .feature-card.animate { opacity: 1; transform: translateY(0); }
         .feature-card:nth-child(1) { transition-delay: 0.1s; }
         .feature-card:nth-child(2) { transition-delay: 0.2s; }
         .feature-card:nth-child(3) { transition-delay: 0.3s; }
         .feature-card:nth-child(4) { transition-delay: 0.4s; }
         .feature-card:nth-child(5) { transition-delay: 0.5s; }
         .feature-card:nth-child(6) { transition-delay: 0.6s; }
-
-        .feature-card:hover {
-            background: var(--card-hover);
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 56px;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 5px 20px rgba(74, 144, 217, 0.3));
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .feature-card p {
-            color: var(--light-text);
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
-        .versions {
-            padding: 80px 0;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .versions-list {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .version-item {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateX(-30px);
-            cursor: pointer;
-        }
-
-        .version-item.animate {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .version-item:hover {
-            background: var(--card-hover);
-            transform: translateX(10px);
-            border-color: var(--secondary-color);
-        }
-
-        .version-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .version-number {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--secondary-color);
-        }
-
-        .version-date {
-            font-size: 14px;
-            color: var(--light-text);
-            background: rgba(103, 194, 58, 0.1);
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-
-        .version-changes {
-            font-size: 15px;
-            color: var(--light-text);
-            line-height: 1.8;
-        }
-
-        .usage {
-            padding: 80px 0;
-        }
-
-        .usage-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .step {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .step.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .step:hover {
-            background: var(--card-hover);
-            transform: translateY(-8px);
-            border-color: var(--primary-color);
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: var(--text-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: 700;
-            margin: 0 auto 25px;
-            box-shadow: 0 5px 20px rgba(74, 144, 217, 0.3);
-        }
-
-        .step h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-color);
-        }
-
-        .step p {
-            font-size: 14px;
-            color: var(--light-text);
-            line-height: 1.6;
-        }
-
-        .download-section {
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .download-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(103, 194, 58, 0.05) 0%, transparent 70%);
-        }
-
-        .download-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .download-content h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .download-content p {
-            font-size: 18px;
-            color: var(--light-text);
-            margin-bottom: 40px;
-            animation: fadeInUp 0.6s ease 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .download-options {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .download-option {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 40px 50px;
-            text-align: center;
-            min-width: 250px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .download-option.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .download-option:hover {
-            background: var(--card-hover);
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-        }
-
-        .download-option h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-
-        .download-option p {
-            font-size: 14px;
-            color: var(--light-text);
-            margin-bottom: 20px;
-        }
-
-        .download-option button {
-            background: linear-gradient(45deg, var(--accent-color), #e63946);
-            color: var(--text-color);
-            padding: 12px 30px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .download-option button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
-        }
-        
-        .download-link {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 13px;
-            color: var(--light-text);
-            text-decoration: underline;
-            transition: color 0.3s ease;
-        }
-        
-        .download-link:hover {
-            color: var(--secondary-color);
-        }
-
-        .download-option.disabled {
-            opacity: 0.5;
-            pointer-events: none;
-        }
-
-        .network-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 14px;
-            margin-bottom: 30px;
-            animation: fadeInUp 0.6s ease 0.4s;
-            animation-fill-mode: both;
-        }
-
-        .network-status.intranet {
-            background: rgba(103, 194, 58, 0.15);
-            color: var(--secondary-color);
-            border: 1px solid rgba(103, 194, 58, 0.3);
-        }
-
-        .network-status.internet {
-            background: rgba(255, 107, 107, 0.15);
-            color: var(--accent-color);
-            border: 1px solid rgba(255, 107, 107, 0.3);
-        }
-
-        .network-status .status-icon {
-            font-size: 16px;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 50px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 25px;
-        }
-
-        .footer-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            font-size: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        .feature-card:hover { background: var(--card-hover); transform: translateY(-10px) scale(1.02); border-color: var(--primary-color); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .feature-icon { font-size: 56px; margin-bottom: 25px; filter: drop-shadow(0 5px 20px rgba(74,144,217,0.3)); }
+        .feature-card h3 { font-size: 24px; font-weight: 600; margin-bottom: 15px; color: var(--text-color); }
+        .feature-card p { color: var(--light-text); line-height: 1.6; font-size: 15px; }
+        .versions { padding: 80px 0; background: rgba(0,0,0,0.2); }
+        .versions-list { max-width: 900px; margin: 0 auto; }
+        .version-item { background: var(--card-bg); border-radius: 15px; padding: 30px; margin-bottom: 20px; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateX(-30px); cursor: pointer; }
+        .version-item.animate { opacity: 1; transform: translateX(0); }
+        .version-item:hover { background: var(--card-hover); transform: translateX(10px); border-color: var(--secondary-color); }
+        .version-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .version-number { font-size: 20px; font-weight: 700; color: var(--secondary-color); }
+        .version-date { font-size: 14px; color: var(--light-text); background: rgba(103,194,58,0.1); padding: 5px 15px; border-radius: 20px; }
+        .version-changes { font-size: 15px; color: var(--light-text); line-height: 1.8; }
+        .usage { padding: 80px 0; }
+        .usage-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
+        .step { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateY(30px); }
+        .step.animate { opacity: 1; transform: translateY(0); }
+        .step:hover { background: var(--card-hover); transform: translateY(-8px); border-color: var(--primary-color); }
+        .step-number { width: 50px; height: 50px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: var(--text-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; margin: 0 auto 25px; box-shadow: 0 5px 20px rgba(74,144,217,0.3); }
+        .step h4 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text-color); }
+        .step p { font-size: 14px; color: var(--light-text); line-height: 1.6; }
+        .download-section { padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+        .download-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at center, rgba(103,194,58,0.05) 0%, transparent 70%); }
+        .download-content { position: relative; z-index: 1; }
+        .download-content h2 { font-size: 36px; margin-bottom: 20px; animation: fadeInUp 0.6s ease; }
+        .download-content p { font-size: 18px; color: var(--light-text); margin-bottom: 40px; animation: fadeInUp 0.6s ease 0.2s; animation-fill-mode: both; }
+        .download-options { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .download-option { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 50px; text-align: center; min-width: 280px; transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateY(30px); }
+        .download-option.animate { opacity: 1; transform: translateY(0); }
+        .download-option:hover { background: var(--card-hover); transform: translateY(-10px); border-color: var(--accent-color); }
+        .download-option h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-color); }
+        .download-option p { font-size: 14px; color: var(--light-text); margin-bottom: 20px; }
+        .download-option button { background: linear-gradient(45deg, var(--accent-color), #e63946); color: var(--text-color); padding: 12px 30px; font-size: 16px; font-weight: 600; border: none; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .download-option button:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,107,107,0.4); }
+        footer { background: rgba(0,0,0,0.3); padding: 50px 0; text-align: center; border-top: 1px solid var(--border-color); }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
+        .footer-links a { color: var(--light-text); text-decoration: none; font-size: 15px; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--secondary-color); }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .nav-links a {
-                font-size: 14px;
-            }
-
-            .download-options {
-                flex-direction: column;
-                align-items: center;
-            }
+            .hero h1 { font-size: 42px; }
+            .hero p { font-size: 16px; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 14px; }
+            .download-options { flex-direction: column; align-items: center; }
         }
+
+        /* Password Modal */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 2000;
+            justify-content: center; align-items: center;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: linear-gradient(135deg, #1a1a2e, #16213e); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px; padding: 40px; max-width: 420px; width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5); animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .modal-box h3 { font-size: 22px; margin-bottom: 8px; color: var(--secondary-color); text-align: center; }
+        .modal-box .modal-desc { font-size: 14px; color: var(--light-text); text-align: center; margin-bottom: 25px; }
+        .modal-box .file-name { font-size: 13px; color: var(--primary-color); text-align: center; margin-bottom: 20px; word-break: break-all; }
+        .modal-box input[type="password"] {
+            width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.05); color: var(--text-color); font-size: 16px;
+            outline: none; transition: border-color 0.3s;
+        }
+        .modal-box input[type="password"]:focus { border-color: var(--secondary-color); }
+        .modal-box .modal-btns { display: flex; gap: 12px; margin-top: 20px; }
+        .modal-box .modal-btns button {
+            flex: 1; padding: 12px; border-radius: 12px; border: none; font-size: 15px;
+            font-weight: 600; cursor: pointer; transition: all 0.3s;
+        }
+        .modal-btn-confirm { background: linear-gradient(45deg, var(--secondary-color), #529b2e); color: #fff; }
+        .modal-btn-confirm:hover { box-shadow: 0 5px 20px rgba(103,194,58,0.4); }
+        .modal-btn-cancel { background: rgba(255,255,255,0.1); color: var(--light-text); }
+        .modal-btn-cancel:hover { background: rgba(255,255,255,0.15); }
+        .modal-error { color: var(--accent-color); font-size: 13px; text-align: center; margin-top: 12px; min-height: 20px; }
+        .modal-lockout { color: #ffa500; font-size: 13px; text-align: center; margin-top: 12px; }
     </style>
 </head>
 <body>
@@ -631,10 +168,10 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Weather_API <span>v0.0.6</span></h1>
-                <p>基于 C++ 开发的实时天气预报程序，支持全国城市查询和全球经纬度查询，数据来自和风天气API</p>
-                <button class="download-btn" onclick="downloadFile('Weather_API_v0.0.6.exe')">立即下载</button>
-                <p style="margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.5);" id="heroNetworkHint"></p>
+                <h1>Weather_API <span>v0.0.7</span></h1>
+                <p>基于 C++ 开发的实时天气预报程序，支持全国城市联网搜索和全球经纬度查询，数据来自和风天气API</p>
+                <button class="download-btn" onclick="requestDownload('Weather_API_v0.0.7.exe')">立即下载 v0.0.7</button>
+                <p style="margin-top: 15px; font-size: 14px; color: rgba(255,255,255,0.5);">输入密码即可下载，错误4次将锁定120秒</p>
             </div>
         </div>
     </section>
@@ -645,8 +182,8 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🌍</div>
-                    <h3>全球天气查询</h3>
-                    <p>支持通过经纬度查询全球任何地点的实时天气和7天预报</p>
+                    <h3>联网搜索城市</h3>
+                    <p>本地数据库未找到城市时自动联网搜索，支持全球任意城市名称</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🏙️</div>
@@ -669,19 +206,9 @@
                     <p>以柱状图形式展示未来7天降水趋势，直观了解降雨情况</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚠️</div>
-                    <h3>天气预警</h3>
-                    <p>实时获取天气预警信息，有则显示无则隐藏，及时了解灾害天气</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>多次查询支持</h3>
-                    <p>支持连续多次查询，无需重新启动程序</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <h3>自定义城市</h3>
-                    <p>提供批处理工具，可自行添加新城市数据并重新编译</p>
+                    <div class="feature-icon">🔒</div>
+                    <h3>密码保护下载</h3>
+                    <p>所有完整版下载需输入密码，连续错误4次将自动锁定120秒</p>
                 </div>
             </div>
         </div>
@@ -691,370 +218,20 @@
         <div class="container">
             <h2 class="section-title">版本历史</h2>
             <div class="versions-list">
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.9.0.apk')">
+                <div class="version-item" onclick="requestDownload('Weather_API_v0.0.7.exe')">
                     <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.9.0（最新版）</span>
-                        <span class="version-date">2026-08-28</span>
+                        <span class="version-number">v0.0.7（最新版）</span>
+                        <span class="version-date">2026-08-29</span>
                     </div>
                     <div class="version-changes">
-                        <strong>美化版本：</strong><br>
-                        • UI全面升级：更精美的渐变色、更大的温度显示、优化卡片设计<br>
-                        • 移除月相、日出日落、AQI、生活指数显示，核心功能更流畅稳定<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.9.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
+                        <strong>联网搜索：</strong><br>
+                        • 新增联网搜索城市功能，本地数据库未找到时自动调用Open-Meteo地理编码API<br>
+                        • 支持输入任意城市名称搜索，无需手动输入经纬度<br>
+                        • 所有天气数据仍使用和风天气API，保持稳定可靠<br>
+                        <a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.7.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a>
                     </div>
                 </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.8.0.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.8.0</span>
-                        <span class="version-date">2026-08-27</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>稳定版本：</strong><br>
-                        • 修复已知问题，提升稳定性<br>
-                        • 保持旧版 API Key 稳定<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.8.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.3.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.3</span>
-                        <span class="version-date">2026-08-25</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>Bug修复：</strong><br>
-                        • 修复部分设备崩溃问题，优化兼容性<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.2.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.2</span>
-                        <span class="version-date">2026-08-24</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>优化版本：</strong><br>
-                        • 优化UI渲染性能，减少内存占用<br>
-                        • 修复天气预警显示异常<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.1.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.1</span>
-                        <span class="version-date">2026-08-23</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>稳定修复：</strong><br>
-                        • 修复升级安装失败问题<br>
-                        • 优化定位响应速度<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7</span>
-                        <span class="version-date">2026-08-22</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 新增15天预报支持<br>
-                        • 优化24小时温度曲线渲染<br>
-                        • 改进城市搜索准确度<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.6.1.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.6.1（稳定版）</span>
-                        <span class="version-date">2026-08-21</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>稳定版修复：</strong><br>
-                        • 修复 APK 直接安装失败（补充缺失 drawable 资源）<br>
-                        • 移除计数限制功能<br>
-                        • 修复升级安装失败（下载校验APK有效性）<br>
-                        • 保持旧版 API Key 稳定<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.6.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.6.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.6</span>
-                        <span class="version-date">2026-08-20</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 优化天气预警显示逻辑<br>
-                        • 改进降水概率展示<br>
-                        • 修复部分城市数据异常<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.6.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.5.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.5</span>
-                        <span class="version-date">2026-08-19</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 新增紫外线指数显示<br>
-                        • 优化夜间模式背景渐变<br>
-                        • 改进天气现象图标渲染<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.5.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.4.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.4</span>
-                        <span class="version-date">2026-08-18</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 新增降水趋势图<br>
-                        • 优化城市数据库索引<br>
-                        • 修复坐标查询精度问题<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.4.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.3.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.3</span>
-                        <span class="version-date">2026-08-17</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 优化24小时温度曲线图<br>
-                        • 新增天气预警横幅<br>
-                        • 改进下拉刷新体验<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.2.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.2（测试版）</span>
-                        <span class="version-date">2026-08-16</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>测试版本：</strong><br>
-                        • 首次引入彩云天气风格UI<br>
-                        • 新增24小时温度曲线预览<br>
-                        • 优化天气数据加载性能<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.0.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.0（原生重制版）</span>
-                        <span class="version-date">2026-08-26</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>全新原生重制：</strong><br>
-                        • 原生安卓应用，彩云天气风格UI，深色渐变背景随天气变化<br>
-                        • 实时天气：温度、体感、湿度、风况、气压、能见度<br>
-                        • 新增24小时温度曲线图，逐时刻天气现象与降水概率<br>
-                        • 未来7天预报，含温度范围条可视化<br>
-                        • 天气预警横幅+详情弹窗，有效期内持续显示<br>
-                        • 调用安卓定位权限，自动匹配定位到区县级<br>
-                        • 内置全国340+城市坐标库，支持搜索全国省/市/区县<br>
-                        • 支持手动输入经纬度坐标精确查询<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓1.0.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 1.0（经典版）</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>经典版本：</strong><br>
-                        • 安卓手机应用，支持城市和经纬度查询<br>
-                        • 实时天气、7天预报、天气预警展示<br>
-                        • 即原 Weather_API.apk<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓1.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.8.0</span>
-                        <span class="version-date">2026-08-27</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>稳定版本：</strong><br>
-                        • 修复已知问题，提升稳定性<br>
-                        • 保持旧版 API Key 稳定<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.8.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.3.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.3</span>
-                        <span class="version-date">2026-08-25</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>Bug修复：</strong><br>
-                        • 修复部分设备崩溃问题，优化兼容性<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.2.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.2</span>
-                        <span class="version-date">2026-08-24</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>优化版本：</strong><br>
-                        • 优化UI渲染性能，减少内存占用<br>
-                        • 修复天气预警显示异常<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.1.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7.1</span>
-                        <span class="version-date">2026-08-23</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>稳定修复：</strong><br>
-                        • 修复升级安装失败问题<br>
-                        • 优化定位响应速度<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.7</span>
-                        <span class="version-date">2026-08-22</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 新增15天预报支持<br>
-                        • 优化24小时温度曲线渲染<br>
-                        • 改进城市搜索准确度<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.7.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.6.1.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.6.1（稳定版）</span>
-                        <span class="version-date">2026-08-21</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>稳定版修复：</strong><br>
-                        • 修复 APK 直接安装失败（补充缺失 drawable 资源）<br>
-                        • 移除计数限制功能<br>
-                        • 修复升级安装失败（下载校验APK有效性）<br>
-                        • 保持旧版 API Key 稳定<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.6.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.6.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.6</span>
-                        <span class="version-date">2026-08-20</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 优化天气预警显示逻辑<br>
-                        • 改进降水概率展示<br>
-                        • 修复部分城市数据异常<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.6.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.5.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.5</span>
-                        <span class="version-date">2026-08-19</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 新增紫外线指数显示<br>
-                        • 优化夜间模式背景渐变<br>
-                        • 改进天气现象图标渲染<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.5.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.4.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.4</span>
-                        <span class="version-date">2026-08-18</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 新增降水趋势图<br>
-                        • 优化城市数据库索引<br>
-                        • 修复坐标查询精度问题<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.4.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.3.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.3</span>
-                        <span class="version-date">2026-08-17</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 优化24小时温度曲线图<br>
-                        • 新增天气预警横幅<br>
-                        • 改进下拉刷新体验<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.2.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓版 2.2（测试版）</span>
-                        <span class="version-date">2026-08-16</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>测试版本：</strong><br>
-                        • 首次引入彩云天气风格UI<br>
-                        • 新增24小时温度曲线预览<br>
-                        • 优化天气数据加载性能<br>
-                        <a href="#" onclick="event.stopPropagation();downloadFile('Weather_API_安卓2.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载 APK</a>
-                    </div>
-                </div>
-                <div class="version-item">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v3.0.0</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>核心改进：</strong><br>
-                        • 移除自选API功能，仅使用Open-Meteo免费数据源<br>
-                        • 修复控制台乱码问题，程序标题显示"特供版"<br>
-                        • 修复API数据解析问题，确保温度、湿度等数据正常显示<br>
-                        • 移除第三方JSON库依赖，使用手动字符串解析<br>
-                        • 使用HTTP协议访问API，避免SSL证书问题<br>
-                        • 支持城市名称和经纬度查询，7天预报，降水趋势图
-                    </div>
-                </div>
-                <div class="version-item">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v1.0.2</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>核心改进：</strong><br>
-                        • 完全重写代码，修复控制台乱码问题<br>
-                        • 修复Open-Meteo API数据解析问题，确保温度、湿度等数据正常显示<br>
-                        • 程序标题显示"特供版"，文字居中对齐<br>
-                        • 移除第三方JSON库依赖，使用手动字符串解析<br>
-                        • 使用HTTP协议访问API，避免SSL证书问题<br>
-                        • 优化gzip压缩数据处理
-                    </div>
-                </div>
-                <div class="version-item">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v1.0.1</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 完全重写版本，支持自定义API Key或使用Open-Meteo免费数据源<br>
-                        • 修复gzip压缩解析bug<br>
-                        • 支持城市名称和经纬度查询
-                    </div>
-                </div>
-                <div class="version-item">
+                <div class="version-item" onclick="requestDownload('Weather_API_v0.0.6.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.6</span>
                         <span class="version-date">2026-07-14</span>
@@ -1063,71 +240,90 @@
                         <strong>新增功能：</strong><br>
                         • 添加降水趋势图，以柱状图形式展示未来7天降水量<br>
                         • 添加天气预警信息，有则显示无则隐藏<br>
-                        • 支持和风天气预警API获取实时预警数据<br>
-                        • 优化7天预报显示，新增降水量列
+                        • 优化7天预报显示，新增降水量列<br>
+                        <a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.6.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a>
                     </div>
                 </div>
-                <div class="version-item">
+                <div class="version-item" onclick="requestDownload('weather_特供版_v3.0.0.exe')">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v3.0.0</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>核心改进：</strong><br>
+                        • 支持Open-Meteo开源API（无需Key）和风天气API双数据源<br>
+                        • 启动时选择数据源，修复控制台UTF-8输出乱码<br>
+                        • 仅包含Windows版，开源数据免费使用<br>
+                        <a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v3.0.0.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a>
+                    </div>
+                </div>
+                <div class="version-item" onclick="requestDownload('weather_特供版_v1.0.2.exe')">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v1.0.2</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>核心改进：</strong><br>
+                        • 完全重写代码，修复控制台乱码问题<br>
+                        • 修复Open-Meteo API数据解析问题<br>
+                        <a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v1.0.2.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a>
+                    </div>
+                </div>
+                <div class="version-item" onclick="requestDownload('Weather_API_安卓2.9.0.apk')">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v2.9.0（最新版）</span>
+                        <span class="version-date">2026-08-28</span>
+                    </div>
+                    <div class="version-changes">美化版本：UI全面升级，更精美的渐变色、更大的温度显示</div>
+                </div>
+                <div class="version-item" onclick="requestDownload('Weather_API_安卓2.0.apk')">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v2.0（原生重制版）</span>
+                        <span class="version-date">2026-08-26</span>
+                    </div>
+                    <div class="version-changes">原生安卓应用，彩云天气风格UI，24小时温度曲线、天气预警详情弹窗</div>
+                </div>
+                <div class="version-item" onclick="requestDownload('Weather_API_安卓1.0.apk')">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v1.0（经典版）</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警</div>
+                </div>
+                <div class="version-item" onclick="requestDownload('Weather_API_v0.0.5.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.5</span>
                         <span class="version-date">2026-07-14</span>
                     </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 添加城市数据批处理工具<br>
-                        • 支持自行添加新城市并重新编译<br>
-                        • 优化城市数据库管理
-                    </div>
+                    <div class="version-changes">添加城市数据批处理工具，支持自行添加新城市并重新编译</div>
                 </div>
-                <div class="version-item">
+                <div class="version-item" onclick="requestDownload('Weather_API_v0.0.4.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.4</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">
-                        <strong>Bug修复：</strong><br>
-                        • 修复经纬度查询问题<br>
-                        • 优化错误提示信息<br>
-                        • 移除图片展示功能
-                    </div>
+                    <div class="version-changes">修复经纬度查询问题，优化错误提示信息</div>
                 </div>
-                <div class="version-item">
+                <div class="version-item" onclick="requestDownload('Weather_API_v0.0.3.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.3</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 添加日出日落时间显示（仅实时天气）<br>
-                        • 优化界面对齐和显示效果<br>
-                        • 改进温度显示格式
-                    </div>
+                    <div class="version-changes">添加日出日落时间显示，优化界面对齐</div>
                 </div>
-                <div class="version-item">
+                <div class="version-item" onclick="requestDownload('Weather_API_v0.0.2.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.2</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">
-                        <strong>功能更新：</strong><br>
-                        • 添加错误提示功能<br>
-                        • 支持城市名称和经纬度查询<br>
-                        • 支持连续多次查询<br>
-                        • 优化用户交互体验
-                    </div>
+                    <div class="version-changes">添加错误提示功能，支持城市名称和经纬度查询</div>
                 </div>
-                <div class="version-item">
+                <div class="version-item" onclick="requestDownload('Weather_API_v0.0.1.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.1</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">
-                        <strong>初始版本：</strong><br>
-                        • 集成和风天气API，支持每日1000次调用限制<br>
-                        • 支持全国城市查询<br>
-                        • 显示实时天气信息（温度、湿度、风速等）<br>
-                        • 提供7天天气预报
-                    </div>
+                    <div class="version-changes">初始版本，集成和风天气API，支持每日1000次调用限制</div>
                 </div>
             </div>
         </div>
@@ -1140,7 +336,7 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <h4>下载程序</h4>
-                    <p>下载 Weather_API_v0.0.6.exe 文件</p>
+                    <p>输入密码后下载 Weather_API_v0.0.7.exe</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
@@ -1150,7 +346,7 @@
                 <div class="step">
                     <div class="step-number">3</div>
                     <h4>选择查询方式</h4>
-                    <p>输入1查询城市，输入2查询经纬度</p>
+                    <p>输入1按城市名查询（支持联网搜索），输入2按经纬度查询</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
@@ -1165,224 +361,28 @@
         <div class="container">
             <div class="download-content">
                 <h2>下载最新版本</h2>
-                <p>选择您需要的版本进行下载</p>
-                <div id="networkStatus" class="network-status">
-                    <span class="status-icon">🔍</span>
-                    <span>正在检测网络环境...</span>
-                </div>
+                <p>输入密码后可下载所有完整版程序</p>
                 <div class="download-options">
-                    <div id="androidVersion" class="download-option">
-                        <h3>📱 Android 安卓 v2.9.0（最新版）</h3>
-                        <p>美化版本：UI全面升级，更精美的渐变色、更大的温度显示、优化卡片设计，移除月相/AQI/日出日落/生活指数</p>
-                        <button onclick="downloadFile('Weather_API_安卓2.9.0.apk')">下载安卓 v2.9.0</button>
+                    <div class="download-option">
+                        <h3>🖥️ Windows v0.0.7（最新版）</h3>
+                        <p>新增联网搜索城市功能，仅使用和风API</p>
+                        <button onclick="requestDownload('Weather_API_v0.0.7.exe')">下载 v0.0.7</button>
                     </div>
-                    <div id="fullVersion" class="download-option">
-                        <h3>🖥️ Windows v0.0.6（全构建版）</h3>
-                        <p>含内置和风 API Key，每日1000次调用限制，降水趋势图+天气预警+7天预报完整版</p>
-                        <button onclick="downloadFile('Weather_API_v0.0.6.exe')">下载 v0.0.6</button>
+                    <div class="download-option">
+                        <h3>🖥️ Windows v0.0.6</h3>
+                        <p>降水趋势图+天气预警+7天预报完整版</p>
+                        <button onclick="requestDownload('Weather_API_v0.0.6.exe')">下载 v0.0.6</button>
                     </div>
-                    <div id="specialVersion" class="download-option">
-                        <h3>🖥️ Windows 特供版 v3.0.0</h3>
-                        <p>移除自选API功能，仅使用Open-Meteo免费数据源，修复乱码和API解析问题</p>
-                        <button onclick="downloadFile('weather_特供版_v3.0.0.exe')">下载特供版 v3.0.0</button>
+                    <div class="download-option">
+                        <h3>📱 Android v2.9.0</h3>
+                        <p>美化版本，UI全面升级</p>
+                        <button onclick="requestDownload('Weather_API_安卓2.9.0.apk')">下载安卓 v2.9.0</button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="versions" style="padding: 80px 0;">
-        <div class="container">
-            <h2 class="section-title">📦 全版本下载</h2>
-            <div class="versions-list">
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.9.0.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.9.0（最新版）</span>
-                        <span class="version-date">2026-08-28</span>
+                    <div class="download-option">
+                        <h3>🖥️ 特供版 v3.0.0</h3>
+                        <p>开源Open-Meteo数据源，无需密码</p>
+                        <button onclick="requestDownload('weather_特供版_v3.0.0.exe')">下载特供版</button>
                     </div>
-                    <div class="version-changes">美化版本：UI全面升级，更精美的渐变色、更大的温度显示、优化卡片设计，移除月相/AQI/日出日落/生活指数</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.8.0.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.8.0</span>
-                        <span class="version-date">2026-08-27</span>
-                    </div>
-                    <div class="version-changes">修复已知问题，提升稳定性，保持旧版API Key稳定</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.3.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.7.3</span>
-                        <span class="version-date">2026-08-25</span>
-                    </div>
-                    <div class="version-changes">修复部分设备崩溃问题，优化兼容性</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.2.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.7.2</span>
-                        <span class="version-date">2026-08-24</span>
-                    </div>
-                    <div class="version-changes">优化UI渲染性能，减少内存占用，修复天气预警显示异常</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.1.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.7.1</span>
-                        <span class="version-date">2026-08-23</span>
-                    </div>
-                    <div class="version-changes">修复升级安装失败问题，优化定位响应速度</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.7.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.7</span>
-                        <span class="version-date">2026-08-22</span>
-                    </div>
-                    <div class="version-changes">新增15天预报支持，优化24小时温度曲线渲染，改进城市搜索准确度</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.6.1.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.6.1（稳定版）</span>
-                        <span class="version-date">2026-08-21</span>
-                    </div>
-                    <div class="version-changes">修复APK安装失败、移除计数限制、修复升级安装失败，保持API Key稳定</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.6.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.6</span>
-                        <span class="version-date">2026-08-20</span>
-                    </div>
-                    <div class="version-changes">优化天气预警显示逻辑，改进降水概率展示，修复部分城市数据异常</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.5.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.5</span>
-                        <span class="version-date">2026-08-19</span>
-                    </div>
-                    <div class="version-changes">新增紫外线指数显示，优化夜间模式背景渐变，改进天气现象图标渲染</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.4.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.4</span>
-                        <span class="version-date">2026-08-18</span>
-                    </div>
-                    <div class="version-changes">新增降水趋势图，优化城市数据库索引，修复坐标查询精度问题</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.3.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.3</span>
-                        <span class="version-date">2026-08-17</span>
-                    </div>
-                    <div class="version-changes">优化24小时温度曲线图，新增天气预警横幅，改进下拉刷新体验</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.2.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.2（测试版）</span>
-                        <span class="version-date">2026-08-16</span>
-                    </div>
-                    <div class="version-changes">首次引入彩云天气风格UI，新增24小时温度曲线预览，优化天气数据加载性能</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓2.0.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.0（原生重制版）</span>
-                        <span class="version-date">2026-08-26</span>
-                    </div>
-                    <div class="version-changes">原生安卓应用，彩云天气风格UI，24小时温度曲线、15天预报、天气预警详情弹窗、自动定位到区县</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_安卓1.0.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 安卓 v1.0（经典版）</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警展示（原 Weather_API.apk）</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API.apk')">
-                    <div class="version-header">
-                        <span class="version-number">📱 Weather_API.apk</span>
-                        <span class="version-date">Android</span>
-                    </div>
-                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.6.exe')" id="ver006">
-                    <div class="version-header">
-                        <span class="version-number">v0.0.6</span>
-                        <span class="version-date">2026-07-14</span>
-                    </div>
-                    <div class="version-changes">添加降水趋势图、天气预警信息、优化7天预报显示（完整版）</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('weather_特供版_v3.0.0.exe')">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v3.0.0</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">移除自选API功能，仅使用Open-Meteo免费数据源，修复乱码和API解析问题</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('weather_特供版_v1.0.2.exe')">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v1.0.2</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">完全重写代码，修复控制台乱码问题，修复Open-Meteo API数据解析问题，程序标题显示"特供版"</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('weather_特供版_v1.0.1.exe')">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v1.0.1</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">完全重写版本，支持自定义API Key或使用Open-Meteo免费数据源，修复gzip压缩解析bug</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('weather_特供版_v0.0.3.exe')">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v0.0.3</span>
-                        <span class="version-date">2026-07-16</span>
-                    </div>
-                    <div class="version-changes">修复Open-Meteo gzip压缩解析bug</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('weather_特供版_v0.0.2.exe')">
-                    <div class="version-header">
-                        <span class="version-number">特供版 v0.0.2</span>
-                        <span class="version-date">2026-07-15</span>
-                    </div>
-                    <div class="version-changes">初始特供版，支持自定义API Key或使用Open-Meteo免费数据源</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.5.exe')" id="ver005">
-                    <div class="version-header">
-                        <span class="version-number">v0.0.5</span>
-                        <span class="version-date">2026-07-14</span>
-                    </div>
-                    <div class="version-changes">添加城市数据批处理工具，支持自行添加新城市并重新编译</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.4.exe')" id="ver004">
-                    <div class="version-header">
-                        <span class="version-number">v0.0.4</span>
-                        <span class="version-date">2026-07-13</span>
-                    </div>
-                    <div class="version-changes">修复经纬度查询问题，优化错误提示，移除图片展示功能</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.3.exe')" id="ver003">
-                    <div class="version-header">
-                        <span class="version-number">v0.0.3</span>
-                        <span class="version-date">2026-07-13</span>
-                    </div>
-                    <div class="version-changes">添加日出日落时间显示（仅实时天气），优化界面对齐</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.2.exe')" id="ver002">
-                    <div class="version-header">
-                        <span class="version-number">v0.0.2</span>
-                        <span class="version-date">2026-07-13</span>
-                    </div>
-                    <div class="version-changes">添加错误提示功能，支持城市名称和经纬度查询，支持多次查询</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather_API_v0.0.1.exe')" id="ver001">
-                    <div class="version-header">
-                        <span class="version-number">v0.0.1</span>
-                        <span class="version-date">2026-07-13</span>
-                    </div>
-                    <div class="version-changes">初始版本，集成和风天气API，支持每日1000次调用限制</div>
-                </div>
-                <div class="version-item" onclick="downloadFile('Weather 有图.exe')" id="verWithImage">
-                    <div class="version-header">
-                        <span class="version-number">Weather 有图版</span>
-                        <span class="version-date">旧版本</span>
-                    </div>
-                    <div class="version-changes">带有天气图标展示的旧版本，功能较精简</div>
                 </div>
             </div>
         </div>
@@ -1400,96 +400,237 @@
         </div>
     </footer>
 
+    <!-- Password Modal -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-box">
+            <h3>🔒 请输入下载密码</h3>
+            <p class="modal-desc">完整版程序受密码保护，请输入正确密码以继续下载</p>
+            <p class="file-name" id="modalFileName"></p>
+            <input type="password" id="passwordInput" placeholder="请输入密码..." autocomplete="off">
+            <div class="modal-btns">
+                <button class="modal-btn-cancel" onclick="closeModal()">取消</button>
+                <button class="modal-btn-confirm" onclick="confirmPassword()">确认下载</button>
+            </div>
+            <div class="modal-error" id="modalError"></div>
+            <div class="modal-lockout" id="modalLockout"></div>
+        </div>
+    </div>
+
     <script>
-        let isIntranet = false;
+        // MD5 hash of password "dyg19841115"
+        const PASSWORD_HASH = "c30c8b91097d89a24c00c74b4e15e032";
+        const MAX_ATTEMPTS = 4;
+        const LOCKOUT_SECONDS = 120;
 
-        function isIntranetAccess() {
-            const hostname = window.location.hostname.toLowerCase();
-            const protocol = window.location.protocol.toLowerCase();
-            
-            const intranetHostnames = ['localhost', '127.0.0.1', 'gyz', '192.168.0.105', '192.168.1.105'];
-            
-            if (intranetHostnames.includes(hostname)) {
-                return true;
+        let pendingFilename = "";
+        let failedAttempts = parseInt(localStorage.getItem("weather_dl_attempts") || "0");
+        let lockoutEnd = parseInt(localStorage.getItem("weather_dl_lockout") || "0");
+
+        // Simple MD5 implementation
+        function md5(string) {
+            function md5cycle(x, k) {
+                var a = x[0], b = x[1], c = x[2], d = x[3];
+                a = ff(a, b, c, d, k[0], 7, -680876936); d = ff(d, a, b, c, k[1], 12, -389564586);
+                c = ff(c, d, a, b, k[2], 17, 606105819); b = ff(b, c, d, a, k[3], 22, -1044525330);
+                a = ff(a, b, c, d, k[4], 7, -176418897); d = ff(d, a, b, c, k[5], 12, 1200080426);
+                c = ff(c, d, a, b, k[6], 17, -1473231341); b = ff(b, c, d, a, k[7], 22, -45705983);
+                a = ff(a, b, c, d, k[8], 7, 1770035416); d = ff(d, a, b, c, k[9], 12, -1958414417);
+                c = ff(c, d, a, b, k[10], 17, -42063); b = ff(b, c, d, a, k[11], 22, -1990404162);
+                a = ff(a, b, c, d, k[12], 7, 1804603682); d = ff(d, a, b, c, k[13], 12, -40341101);
+                c = ff(c, d, a, b, k[14], 17, -1502002290); b = ff(b, c, d, a, k[15], 22, 1236535329);
+                a = gg(a, b, c, d, k[1], 5, -165796510); d = gg(d, a, b, c, k[6], 9, -1069501632);
+                c = gg(c, d, a, b, k[11], 14, 643717713); b = gg(b, c, d, a, k[0], 20, -373897302);
+                a = gg(a, b, c, d, k[5], 5, -701558691); d = gg(d, a, b, c, k[10], 9, 38016083);
+                c = gg(c, d, a, b, k[15], 14, -660478335); b = gg(b, c, d, a, k[4], 20, -405537848);
+                a = gg(a, b, c, d, k[9], 5, 568446438); d = gg(d, a, b, c, k[14], 9, -1019803690);
+                c = gg(c, d, a, b, k[3], 14, -187363961); b = gg(b, c, d, a, k[8], 20, 1163531501);
+                a = gg(a, b, c, d, k[13], 5, -1444681467); d = gg(d, a, b, c, k[2], 9, -51403784);
+                c = gg(c, d, a, b, k[7], 14, 1735328473); b = gg(b, c, d, a, k[12], 20, -1926607734);
+                a = hh(a, b, c, d, k[5], 4, -378558); d = hh(d, a, b, c, k[8], 11, -2022574463);
+                c = hh(c, d, a, b, k[11], 16, 1839030562); b = hh(b, c, d, a, k[14], 23, -35309556);
+                a = hh(a, b, c, d, k[1], 4, -1530992060); d = hh(d, a, b, c, k[4], 11, 1272893353);
+                c = hh(c, d, a, b, k[7], 16, -155497632); b = hh(b, c, d, a, k[10], 23, -1094730640);
+                a = hh(a, b, c, d, k[13], 4, 681279174); d = hh(d, a, b, c, k[0], 11, -358537222);
+                c = hh(c, d, a, b, k[3], 16, -722521979); b = hh(b, c, d, a, k[6], 23, 76029189);
+                a = hh(a, b, c, d, k[9], 4, -640364487); d = hh(d, a, b, c, k[12], 11, -421815835);
+                c = hh(c, d, a, b, k[15], 16, 530742520); b = hh(b, c, d, a, k[2], 23, -995338651);
+                a = ii(a, b, c, d, k[0], 6, -198630844); d = ii(d, a, b, c, k[7], 10, 1126891415);
+                c = ii(c, d, a, b, k[14], 15, -1416354905); b = ii(b, c, d, a, k[5], 21, -57434055);
+                a = ii(a, b, c, d, k[12], 6, 1700485571); d = ii(d, a, b, c, k[3], 10, -1894986606);
+                c = ii(c, d, a, b, k[10], 15, -1051523); b = ii(b, c, d, a, k[1], 21, -2054922799);
+                a = ii(a, b, c, d, k[8], 6, 1873313359); d = ii(d, a, b, c, k[15], 10, -30611744);
+                c = ii(c, d, a, b, k[6], 15, -1560198380); b = ii(b, c, d, a, k[13], 21, 1309151649);
+                a = ii(a, b, c, d, k[4], 6, -145523070); d = ii(d, a, b, c, k[11], 10, -1120210379);
+                c = ii(c, d, a, b, k[2], 15, 718787259); b = ii(b, c, d, a, k[9], 21, -343485551);
+                x[0] = add32(a, x[0]); x[1] = add32(b, x[1]); x[2] = add32(c, x[2]); x[3] = add32(d, x[3]);
             }
-            
-            if (/^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
-                const parts = hostname.split('.').map(Number);
-                return (
-                    parts[0] === 10 ||
-                    (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) ||
-                    (parts[0] === 192 && parts[1] === 168) ||
-                    parts[0] === 127 ||
-                    hostname.startsWith('169.254.')
-                );
+            function cmn(q, a, b, x, s, t) { a = add32(add32(a, q), add32(x, t)); return add32((a << s) | (a >>> (32-s)), b); }
+            function ff(a, b, c, d, x, s, t) { return cmn((b & c) | ((~b) & d), a, b, x, s, t); }
+            function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & (~d)), a, b, x, s, t); }
+            function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
+            function ii(a, b, c, d, x, s, t) { return cmn(c ^ (b | (~d)), a, b, x, s, t); }
+            function md51(s) {
+                var n = s.length, state = [1732584193, -271733879, -1732584194, 271733878], i;
+                for (i = 64; i <= n; i += 64) {
+                    md5cycle(state, md5blk(s.substring(i-64, i)));
+                }
+                s = s.substring(i-64);
+                var tail = [];
+                for (i = 0; i < s.length; i++) tail.push(s.charCodeAt(i));
+                tail.push(128);
+                while (tail.length % 64 !== 56) tail.push(0);
+                tail.push(n * 8);
+                md5cycle(state, md5blk(tile26(tail)));
+                return state;
             }
-            
-            return false;
+            function md5blk(s) {
+                var md5blks = 16, i, r = new Array(md5blks);
+                for (i = 0; i < md5blks; i++) r[i] = s.charCodeAt(i*4) | (s.charCodeAt(i*4+1) << 8) | (s.charCodeAt(i*4+2) << 16) | (s.charCodeAt(i*4+3) << 24);
+                return r;
+            }
+            function md5blk(s) { var md5blks=16,i,r=new Array(md5blks); for(i=0;i<md5blks;i++)r[i]=s.charCodeAt(i*4)|(s.charCodeAt(i*4+1)<<8)|(s.charCodeAt(i*4+2)<<16)|(s.charCodeAt(i*4+3)<<24); return r; }
+            function md5hex(k) {
+                var hex_chr = '0123456789abcdef', s = '';
+                for (var j = 0; j < 4; j++) {
+                    s += hex_chr.charAt((k[j] >> 4) & 0x0f) + hex_chr.charAt(k[j] & 0x0f);
+                }
+                return s;
+            }
+            function add32(a, b) { return (a + b) & 0xFFFFFFFF; }
+            function tile8(k) {
+                var i, r = new Array(64);
+                for (i = 0; i < 64; i++) r[i] = k[Math.floor(i / 4)] & (255 << (24 - (i % 4) * 8));
+                return r;
+            }
+            function tile26(k) {
+                var i, r = new Array(16);
+                for (i = 0; i < 16; i++) r[i] = k[i] & 0xFFFFFFFF;
+                return r;
+            }
+            function md5hex2(k) {
+                var hex_chr = '0123456789abcdef', s = '';
+                for (var j = 0; j < 4; j++) {
+                    s += hex_chr.charAt((k[j] >> 4) & 0x0f) + hex_chr.charAt(k[j] & 0x0f);
+                }
+                return s;
+            }
+            return md5hex(md51(string));
         }
 
-        function detectNetwork() {
-            const statusEl = document.getElementById('networkStatus');
-            const fullVersionEl = document.getElementById('fullVersion');
-            const androidVersionEl = document.getElementById('androidVersion');
-            
-            isIntranet = isIntranetAccess();
-            
-            if (isIntranet) {
-                statusEl.className = 'network-status intranet';
-                statusEl.innerHTML = '<span class="status-icon">🏠</span><span>内网访问 - 可下载所有版本</span>';
-                fullVersionEl.classList.remove('disabled');
-                androidVersionEl.classList.remove('disabled');
-                document.getElementById('heroNetworkHint').textContent = '🏠 内网访问 - 所有版本均可下载';
-                
-                document.querySelectorAll('.version-item').forEach(el => {
-                    el.classList.remove('disabled');
-                });
-            } else {
-                statusEl.className = 'network-status internet';
-                statusEl.innerHTML = '<span class="status-icon">🌐</span><span>公网访问 - 仅提供特供版下载</span>';
-                fullVersionEl.classList.add('disabled');
-                androidVersionEl.classList.add('disabled');
-                document.getElementById('heroNetworkHint').textContent = '🌐 公网访问 - 完整版和APK仅对内网开放';
-                
-                ['ver006', 'ver005', 'ver004', 'ver003', 'ver002', 'ver001', 'verWithImage'].forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.classList.add('disabled');
-                });
-            }
+        function getRemainingLockout() {
+            if (lockoutEnd === 0) return 0;
+            var remaining = Math.max(0, Math.ceil((lockoutEnd - Date.now()) / 1000));
+            return remaining;
         }
 
-        function downloadFile(filename) {
-            let url;
-            if (isIntranet) {
-                // 内网环境：全部文件无限制下载
-                url = '天气预报全版本/' + filename;
+        function checkLockout() {
+            var remaining = getRemainingLockout();
+            if (remaining > 0) {
+                return remaining;
+            }
+            // Lockout expired, reset
+            if (lockoutEnd > 0) {
+                failedAttempts = 0;
+                lockoutEnd = 0;
+                localStorage.setItem("weather_dl_attempts", "0");
+                localStorage.setItem("weather_dl_lockout", "0");
+            }
+            return 0;
+        }
+
+        function requestDownload(filename) {
+            // 特供版无需密码
+            if (filename.includes("特供版")) {
+                window.location.href = "weatherall/" + filename;
+                return;
+            }
+            pendingFilename = filename;
+            document.getElementById("modalFileName").textContent = "正在下载: " + filename;
+            document.getElementById("passwordInput").value = "";
+            document.getElementById("modalError").textContent = "";
+            document.getElementById("modalLockout").textContent = "";
+            document.getElementById("passwordModal").classList.add("active");
+            setTimeout(function() { document.getElementById("passwordInput").focus(); }, 100);
+        }
+
+        function closeModal() {
+            document.getElementById("passwordModal").classList.remove("active");
+            pendingFilename = "";
+        }
+
+        function confirmPassword() {
+            var input = document.getElementById("passwordInput").value;
+            var errorEl = document.getElementById("modalError");
+            var lockoutEl = document.getElementById("modalLockout");
+            var remaining = checkLockout();
+
+            if (remaining > 0) {
+                lockoutEl.textContent = "输入错误次数过多，请等待 " + remaining + " 秒后再试";
+                return;
+            }
+
+            var hash = md5(input);
+            if (hash === PASSWORD_HASH) {
+                // Password correct
+                failedAttempts = 0;
+                lockoutEnd = 0;
+                localStorage.setItem("weather_dl_attempts", "0");
+                localStorage.setItem("weather_dl_lockout", "0");
+                errorEl.textContent = "";
+                closeModal();
+                window.location.href = "weatherall/" + pendingFilename;
             } else {
-                // 公网环境：匹配文件名包含「特供版」即可放行
-                if (filename.includes('特供版')) {
-                    url = 'public/' + filename;
+                // Wrong password
+                failedAttempts++;
+                localStorage.setItem("weather_dl_attempts", String(failedAttempts));
+                if (failedAttempts >= MAX_ATTEMPTS) {
+                    lockoutEnd = Date.now() + LOCKOUT_SECONDS * 1000;
+                    localStorage.setItem("weather_dl_lockout", String(lockoutEnd));
+                    lockoutEl.textContent = "密码错误次数过多，已锁定 " + LOCKOUT_SECONDS + " 秒";
                 } else {
-                    alert('该版本仅对内网用户开放，请下载文件名带有「特供版」标识的程序！');
-                    return;
+                    errorEl.textContent = "密码错误，剩余尝试次数: " + (MAX_ATTEMPTS - failedAttempts);
+                }
+                document.getElementById("passwordInput").value = "";
+            }
+        }
+
+        // Enter key to submit
+        document.getElementById("passwordInput").addEventListener("keydown", function(e) {
+            if (e.key === "Enter") confirmPassword();
+        });
+
+        // Close modal on overlay click
+        document.getElementById("passwordModal").addEventListener("click", function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Lockout timer update
+        setInterval(function() {
+            var lockoutEl = document.getElementById("modalLockout");
+            if (lockoutEl && lockoutEl.textContent.length > 0) {
+                var remaining = checkLockout();
+                if (remaining > 0) {
+                    lockoutEl.textContent = "密码错误次数过多，请等待 " + remaining + " 秒后再试";
+                } else {
+                    lockoutEl.textContent = "";
                 }
             }
-            window.location.href = url;
-        }
+        }, 1000);
 
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.feature-card, .version-item, .step, .download-option');
-            
-            elements.forEach(element => {
-                const rect = element.getBoundingClientRect();
+            var elements = document.querySelectorAll('.feature-card, .version-item, .step, .download-option');
+            elements.forEach(function(element) {
+                var rect = element.getBoundingClientRect();
                 if (rect.top < window.innerHeight * 0.85) {
                     element.classList.add('animate');
                 }
             });
         }
-
         window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function() {
             animateOnScroll();
-            detectNetwork();
+            // Check if there's an active lockout on page load
+            checkLockout();
         });
     </script>
 </body>
