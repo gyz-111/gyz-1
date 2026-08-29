@@ -79,11 +79,13 @@
         .version-date { font-size: 14px; color: var(--light-text); background: rgba(103,194,58,0.1); padding: 5px 15px; border-radius: 20px; }
         .version-changes { font-size: 15px; color: var(--light-text); line-height: 1.8; }
         html { scroll-behavior: smooth; }
-        .platform-group { margin-bottom: 70px; scroll-margin-top: 110px; }
+        .platform-group { margin-bottom: 36px; scroll-margin-top: 110px; }
+        .platform-group.open { margin-bottom: 70px; }
         .platform-group:last-child { margin-bottom: 0; }
-        .platform-title { text-align: center; font-size: 26px; font-weight: 600; margin-bottom: 35px; color: var(--secondary-color); cursor: pointer; user-select: none; transition: color 0.3s ease; }
+        .platform-title { display: flex; justify-content: center; align-items: center; gap: 10px; text-align: center; font-size: 26px; font-weight: 600; margin-bottom: 0; color: var(--secondary-color); cursor: pointer; user-select: none; transition: color 0.3s ease; }
+        .platform-group.open .platform-title { margin-bottom: 35px; }
         .platform-title:hover { color: var(--primary-color); }
-        .toggle-icon { display: inline-block; font-size: 16px; margin-left: 8px; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .toggle-icon { display: inline-block; font-size: 16px; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
         .platform-group.open .toggle-icon { transform: rotate(-180deg); }
         .platform-group .versions-list { display: none; }
         .platform-group.open .versions-list { display: block; animation: groupFadeIn 0.4s cubic-bezier(0.4,0,0.2,1); }
