@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -57,7 +57,7 @@
         .section-title { text-align: center; font-size: 40px; font-weight: 700; margin-bottom: 80px; position: relative; animation: fadeInUp 0.6s ease; }
         .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .feature-card { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateY(30px); }
+        .feature-card { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(30px); }
         .feature-card.animate { opacity: 1; transform: translateY(0); }
         .feature-card:nth-child(1) { transition-delay: 0.1s; }
         .feature-card:nth-child(2) { transition-delay: 0.2s; }
@@ -71,7 +71,7 @@
         .feature-card p { color: var(--light-text); line-height: 1.6; font-size: 15px; }
         .versions { padding: 80px 0; background: rgba(0,0,0,0.2); }
         .versions-list { max-width: 900px; margin: 0 auto; }
-        .version-item { background: var(--card-bg); border-radius: 15px; padding: 30px; margin-bottom: 20px; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateX(-30px); cursor: pointer; }
+        .version-item { background: var(--card-bg); border-radius: 15px; padding: 30px; margin-bottom: 20px; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateX(-30px); cursor: pointer; }
         .version-item.animate { opacity: 1; transform: translateX(0); }
         .version-item:hover { background: var(--card-hover); transform: translateX(10px); border-color: var(--secondary-color); }
         .version-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
@@ -80,7 +80,7 @@
         .version-changes { font-size: 15px; color: var(--light-text); line-height: 1.8; }
         .usage { padding: 80px 0; }
         .usage-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
-        .step { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateY(30px); }
+        .step { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(30px); }
         .step.animate { opacity: 1; transform: translateY(0); }
         .step:hover { background: var(--card-hover); transform: translateY(-8px); border-color: var(--primary-color); }
         .step-number { width: 50px; height: 50px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: var(--text-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; margin: 0 auto 25px; box-shadow: 0 5px 20px rgba(74,144,217,0.3); }
@@ -92,7 +92,7 @@
         .download-content h2 { font-size: 36px; margin-bottom: 20px; animation: fadeInUp 0.6s ease; }
         .download-content p { font-size: 18px; color: var(--light-text); margin-bottom: 40px; animation: fadeInUp 0.6s ease 0.2s; animation-fill-mode: both; }
         .download-options { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .download-option { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 50px; text-align: center; min-width: 280px; transition: all 0.5s cubic-bezier(0.4,0,0,2,1); opacity: 0; transform: translateY(30px); }
+        .download-option { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 50px; text-align: center; min-width: 280px; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(30px); }
         .download-option.animate { opacity: 1; transform: translateY(0); }
         .download-option:hover { background: var(--card-hover); transform: translateY(-10px); border-color: var(--accent-color); }
         .download-option h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-color); }
@@ -162,9 +162,10 @@
                 <a href="#" class="logo">Weather<span>_API</span></a>
                 <ul class="nav-links">
                     <li><a href="#features">功能特点</a></li>
-                    <li><a href="#versions">全版本下载</a></li>
+                    <li><a href="#versions">版本历史</a></li>
                     <li><a href="#usage">使用说明</a></li>
                     <li><a href="#download">下载</a></li>
+                    <li><a href="#all-versions">全版本下载</a></li>
                 </ul>
             </nav>
         </div>
@@ -219,7 +220,165 @@
         </div>
     </section>
 
+
+
     <section class="versions" id="versions">
+        <div class="container">
+            <h2 class="section-title">版本历史</h2>
+            <div class="versions-list">
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.7（最新版）</span>
+                        <span class="version-date">2026-08-29</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>联网搜索：</strong><br>
+                        • 新增联网搜索城市功能，本地数据库未找到时自动调用和风地理编码API<br>
+                        • 支持输入任意城市名称搜索，无需手动输入经纬度<br>
+                        • 所有天气数据仍使用和风天气API，保持稳定可靠
+                    </div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.6</span>
+                        <span class="version-date">2026-07-14</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>新增功能：</strong><br>
+                        • 添加降水趋势图，以柱状图形式展示未来7天降水量<br>
+                        • 添加天气预警信息，有则显示无则隐藏<br>
+                        • 优化7天预报显示，新增降水量列
+                    </div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v3.0.0</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>核心改进：</strong><br>
+                        • 支持Open-Meteo开源API（无需Key）和风天气API双数据源<br>
+                        • 启动时选择数据源，修复控制台UTF-8输出乱码<br>
+                        • 仅包含Windows版，开源数据免费使用
+                    </div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">特供版 v1.0.2</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">
+                        <strong>核心改进：</strong><br>
+                        • 完全重写代码，修复控制台乱码问题<br>
+                        • 修复Open-Meteo API数据解析问题
+                    </div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v2.9.0（最新版）</span>
+                        <span class="version-date">2026-08-28</span>
+                    </div>
+                    <div class="version-changes">美化版本：UI全面升级，更精美的渐变色、更大的温度显示</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v2.0（原生重制版）</span>
+                        <span class="version-date">2026-08-26</span>
+                    </div>
+                    <div class="version-changes">原生安卓应用，彩云天气风格UI，24小时温度曲线、天气预警详情弹窗</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v1.0（经典版）</span>
+                        <span class="version-date">2026-07-16</span>
+                    </div>
+                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.5</span>
+                        <span class="version-date">2026-07-14</span>
+                    </div>
+                    <div class="version-changes">添加城市数据批处理工具，支持自行添加新城市并重新编译</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.4</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">修复经纬度查询问题，优化错误提示信息</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.3</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">添加日出日落时间显示，优化界面对齐</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.2</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">添加错误提示功能，支持城市名称和经纬度查询</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">v0.0.1</span>
+                        <span class="version-date">2026-07-13</span>
+                    </div>
+                    <div class="version-changes">初始版本，集成和风天气API，支持每日1000次调用限制</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="usage" id="usage">
+        <div class="container">
+            <h2 class="section-title">使用说明</h2>
+            <div class="usage-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>下载程序</h4>
+                    <p>输入密码后下载 Weather_API_v0.0.7.exe</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>运行程序</h4>
+                    <p>双击运行可执行文件</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>选择查询方式</h4>
+                    <p>输入1按城市名查询（支持联网搜索），输入2按经纬度查询</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>查看结果</h4>
+                    <p>查看实时天气、7天预报、降水趋势和预警信息</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section" id="download">
+        <div class="container">
+            <div class="download-content">
+                <h2>下载最新版本</h2>
+                <p>输入密码后可下载所有完整版程序</p>
+                <div class="download-options">
+                    <div class="download-option">
+                        <h3>🖥️ Windows v0.0.7（最新版）</h3>
+                        <p>新增联网搜索城市功能，仅使用和风API</p>
+                        <button onclick="requestDownload('Weather_API_v0.0.7.exe')">下载 v0.0.7</button>
+                    </div>
+                </div>
+                <p style="margin-top: 25px; font-size: 14px; color: rgba(255,255,255,0.5);">更多历史版本请查看下方「📦 全版本下载」</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="versions" id="all-versions">
         <div class="container">
             <h2 class="section-title">📦 全版本下载</h2>
             <div class="versions-list">
@@ -430,58 +589,14 @@
         </div>
     </section>
 
-    <section class="usage" id="usage">
-        <div class="container">
-            <h2 class="section-title">使用说明</h2>
-            <div class="usage-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h4>下载程序</h4>
-                    <p>输入密码后下载 Weather_API_v0.0.7.exe</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h4>运行程序</h4>
-                    <p>双击运行可执行文件</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h4>选择查询方式</h4>
-                    <p>输入1按城市名查询（支持联网搜索），输入2按经纬度查询</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h4>查看结果</h4>
-                    <p>查看实时天气、7天预报、降水趋势和预警信息</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="download-section" id="download">
-        <div class="container">
-            <div class="download-content">
-                <h2>下载最新版本</h2>
-                <p>输入密码后可下载所有完整版程序</p>
-                <div class="download-options">
-                    <div class="download-option">
-                        <h3>🖥️ Windows v0.0.7（最新版）</h3>
-                        <p>新增联网搜索城市功能，仅使用和风API</p>
-                        <button onclick="requestDownload('Weather_API_v0.0.7.exe')">下载 v0.0.7</button>
-                    </div>
-                </div>
-                <p style="margin-top: 25px; font-size: 14px; color: rgba(255,255,255,0.5);">更多历史版本请查看上方「📦 全版本下载」</p>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
             <div class="footer-links">
                 <a href="#features">功能</a>
-                <a href="#versions">全版本</a>
+                <a href="#versions">版本</a>
                 <a href="#usage">使用</a>
                 <a href="#download">下载</a>
+                <a href="#all-versions">全版本</a>
             </div>
             <p>&copy; 2026 Weather_API. All rights reserved.</p>
         </div>
@@ -721,10 +836,10 @@
             var elements = document.querySelectorAll('.feature-card, .version-item, .step, .download-option');
             elements.forEach(function(element) {
                 var rect = element.getBoundingClientRect();
-                // 进入视口渐入，离开视口渐出
+                // 进入视口85%线渐入（netlify样式），完全离开视口后渐出，避免边缘来回闪烁
                 if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
                     element.classList.add('animate');
-                } else {
+                } else if (rect.bottom <= 0 || rect.top >= window.innerHeight) {
                     element.classList.remove('animate');
                 }
             });
