@@ -84,7 +84,13 @@
         .platform-nav a:hover { border-color: var(--primary-color); background: var(--card-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
         .platform-group { margin-bottom: 70px; scroll-margin-top: 110px; }
         .platform-group:last-child { margin-bottom: 0; }
-        .platform-title { text-align: center; font-size: 26px; font-weight: 600; margin-bottom: 35px; color: var(--secondary-color); }
+        .platform-title { text-align: center; font-size: 26px; font-weight: 600; margin-bottom: 35px; color: var(--secondary-color); cursor: pointer; user-select: none; transition: color 0.3s ease; }
+        .platform-title:hover { color: var(--primary-color); }
+        .toggle-icon { display: inline-block; font-size: 16px; margin-left: 8px; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .platform-group.open .toggle-icon { transform: rotate(-180deg); }
+        .platform-group .versions-list { display: none; }
+        .platform-group.open .versions-list { display: block; animation: groupFadeIn 0.4s cubic-bezier(0.4,0,0.2,1); }
+        @keyframes groupFadeIn { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
         .usage { padding: 80px 0; }
         .usage-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
         .step { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(30px); }
@@ -399,227 +405,227 @@
         <div class="container">
             <h2 class="section-title">📦 全版本下载</h2>
             <div class="platform-nav">
-                <a href="#grp-windows">🖥️ Windows 完整版</a>
-                <a href="#grp-android">📱 安卓版</a>
-                <a href="#grp-special">🧩 特供版</a>
+                <a href="#grp-windows" onclick="openGroup(event, 'grp-windows')">🖥️ Windows 完整版</a>
+                <a href="#grp-android" onclick="openGroup(event, 'grp-android')">📱 安卓版</a>
+                <a href="#grp-special" onclick="openGroup(event, 'grp-special')">🧩 特供版</a>
             </div>
             <div class="platform-group" id="grp-windows">
-                <h3 class="platform-title">🖥️ Windows 完整版</h3>
+                <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🖥️ Windows 完整版 <span class="toggle-icon">▼</span></h3>
             <div class="versions-list">
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.7.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.7（最新版）</span>
                         <span class="version-date">2026-08-29</span>
                     </div>
-                    <div class="version-changes">新增联网搜索城市功能，本地数据库未找到时自动调用和风地理编码API，支持输入任意城市名称搜索，无需手动输入经纬度</div>
+                    <div class="version-changes">新增联网搜索城市功能，本地数据库未找到时自动调用和风地理编码API，支持输入任意城市名称搜索，无需手动输入经纬度<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.7.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.6.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.6</span>
                         <span class="version-date">2026-07-14</span>
                     </div>
-                    <div class="version-changes">添加降水趋势图、天气预警信息，优化7天预报显示并新增降水量列（完整版）</div>
+                    <div class="version-changes">添加降水趋势图、天气预警信息，优化7天预报显示并新增降水量列（完整版）<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.6.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.5.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.5</span>
                         <span class="version-date">2026-07-14</span>
                     </div>
-                    <div class="version-changes">添加城市数据批处理工具，支持自行添加新城市并重新编译</div>
+                    <div class="version-changes">添加城市数据批处理工具，支持自行添加新城市并重新编译<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.5.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.4.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.4</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">修复经纬度查询问题，优化错误提示信息</div>
+                    <div class="version-changes">修复经纬度查询问题，优化错误提示信息<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.4.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.3.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.3</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">添加日出日落时间显示，优化界面对齐</div>
+                    <div class="version-changes">添加日出日落时间显示，优化界面对齐<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.3.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.2.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.2</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">添加错误提示功能，支持城市名称和经纬度查询</div>
+                    <div class="version-changes">添加错误提示功能，支持城市名称和经纬度查询<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.2.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.1.exe')">
                     <div class="version-header">
                         <span class="version-number">v0.0.1</span>
                         <span class="version-date">2026-07-13</span>
                     </div>
-                    <div class="version-changes">初始版本，集成和风天气API，支持每日1000次调用限制</div>
+                    <div class="version-changes">初始版本，集成和风天气API，支持每日1000次调用限制<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_v0.0.1.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('weather 有图.exe')">
                     <div class="version-header">
                         <span class="version-number">Weather 有图版</span>
                         <span class="version-date">旧版本</span>
                     </div>
-                    <div class="version-changes">带有天气图标展示的旧版本，功能较精简</div>
+                    <div class="version-changes">带有天气图标展示的旧版本，功能较精简<a href="#" onclick="event.stopPropagation();requestDownload('weather 有图.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
             </div>
             </div>
 
             <div class="platform-group" id="grp-android">
-                <h3 class="platform-title">📱 安卓版</h3>
+                <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">📱 安卓版 <span class="toggle-icon">▼</span></h3>
                 <div class="versions-list">
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.9.0.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.9.0（最新版）</span>
                         <span class="version-date">2026-08-28</span>
                     </div>
-                    <div class="version-changes">美化版本：UI全面升级，更精美的渐变色、更大的温度显示</div>
+                    <div class="version-changes">美化版本：UI全面升级，更精美的渐变色、更大的温度显示<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.9.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.8.0.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.8.0</span>
                         <span class="version-date">2026-08-27</span>
                     </div>
-                    <div class="version-changes">修复已知问题，提升稳定性，保持旧版API Key稳定</div>
+                    <div class="version-changes">修复已知问题，提升稳定性，保持旧版API Key稳定<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.8.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.7.3.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.7.3</span>
                         <span class="version-date">2026-08-25</span>
                     </div>
-                    <div class="version-changes">修复部分设备崩溃问题，优化兼容性</div>
+                    <div class="version-changes">修复部分设备崩溃问题，优化兼容性<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.7.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.7.2.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.7.2</span>
                         <span class="version-date">2026-08-24</span>
                     </div>
-                    <div class="version-changes">优化UI渲染性能，减少内存占用，修复天气预警显示异常</div>
+                    <div class="version-changes">优化UI渲染性能，减少内存占用，修复天气预警显示异常<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.7.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.7.1.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.7.1</span>
                         <span class="version-date">2026-08-23</span>
                     </div>
-                    <div class="version-changes">修复升级安装失败问题，优化定位响应速度</div>
+                    <div class="version-changes">修复升级安装失败问题，优化定位响应速度<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.7.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.7.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.7</span>
                         <span class="version-date">2026-08-22</span>
                     </div>
-                    <div class="version-changes">新增15天预报支持，优化24小时温度曲线渲染，改进城市搜索准确度</div>
+                    <div class="version-changes">新增15天预报支持，优化24小时温度曲线渲染，改进城市搜索准确度<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.7.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.6.1.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.6.1（稳定版）</span>
                         <span class="version-date">2026-08-21</span>
                     </div>
-                    <div class="version-changes">修复APK安装失败、移除计数限制、修复升级安装失败，保持API Key稳定</div>
+                    <div class="version-changes">修复APK安装失败、移除计数限制、修复升级安装失败，保持API Key稳定<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.6.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.6.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.6</span>
                         <span class="version-date">2026-08-20</span>
                     </div>
-                    <div class="version-changes">优化天气预警显示逻辑，改进降水概率展示，修复部分城市数据异常</div>
+                    <div class="version-changes">优化天气预警显示逻辑，改进降水概率展示，修复部分城市数据异常<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.6.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.5.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.5</span>
                         <span class="version-date">2026-08-19</span>
                     </div>
-                    <div class="version-changes">新增紫外线指数显示，优化夜间模式背景渐变，改进天气现象图标渲染</div>
+                    <div class="version-changes">新增紫外线指数显示，优化夜间模式背景渐变，改进天气现象图标渲染<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.5.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.4.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.4</span>
                         <span class="version-date">2026-08-18</span>
                     </div>
-                    <div class="version-changes">新增降水趋势图，优化城市数据库索引，修复坐标查询精度问题</div>
+                    <div class="version-changes">新增降水趋势图，优化城市数据库索引，修复坐标查询精度问题<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.4.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.3.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.3</span>
                         <span class="version-date">2026-08-17</span>
                     </div>
-                    <div class="version-changes">优化24小时温度曲线图，新增天气预警横幅，改进下拉刷新体验</div>
+                    <div class="version-changes">优化24小时温度曲线图，新增天气预警横幅，改进下拉刷新体验<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.2_测试旧版.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.2（测试旧版）</span>
                         <span class="version-date">2026-08-16</span>
                     </div>
-                    <div class="version-changes">首次引入彩云天气风格UI，新增24小时温度曲线预览，优化天气数据加载性能</div>
+                    <div class="version-changes">首次引入彩云天气风格UI，新增24小时温度曲线预览，优化天气数据加载性能<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.2_测试旧版.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.0.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.0（原生重制版）</span>
                         <span class="version-date">2026-08-26</span>
                     </div>
-                    <div class="version-changes">原生安卓应用，彩云天气风格UI，24小时温度曲线、天气预警详情弹窗</div>
+                    <div class="version-changes">原生安卓应用，彩云天气风格UI，24小时温度曲线、天气预警详情弹窗<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓1.0.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v1.0（经典版）</span>
                         <span class="version-date">2026-07-16</span>
                     </div>
-                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警</div>
+                    <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓1.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
             </div>
             </div>
 
             <div class="platform-group" id="grp-special">
-                <h3 class="platform-title">🧩 特供版（免密码下载）</h3>
+                <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🧩 特供版（免密码下载） <span class="toggle-icon">▼</span></h3>
                 <div class="versions-list">
                 <div class="version-item" onclick="requestDownload('weather_特供版_v3.0.0.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v3.0.0</span>
                         <span class="version-date">2026-07-16</span>
                     </div>
-                    <div class="version-changes">支持Open-Meteo开源API（无需Key）与和风API双数据源，启动时可选数据源，无需密码</div>
+                    <div class="version-changes">支持Open-Meteo开源API（无需Key）与和风API双数据源，启动时可选数据源，无需密码<a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v3.0.0.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('weather_特供版_v2.0.3.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v2.0.3</span>
                         <span class="version-date">2026-07-16</span>
                     </div>
-                    <div class="version-changes">移除自选API功能，仅使用Open-Meteo免费数据源，修复乱码和API解析问题</div>
+                    <div class="version-changes">移除自选API功能，仅使用Open-Meteo免费数据源，修复乱码和API解析问题<a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v2.0.3.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('weather_特供版_v1.0.2.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v1.0.2</span>
                         <span class="version-date">2026-07-16</span>
                     </div>
-                    <div class="version-changes">完全重写代码，修复控制台乱码问题，修复Open-Meteo API数据解析问题</div>
+                    <div class="version-changes">完全重写代码，修复控制台乱码问题，修复Open-Meteo API数据解析问题<a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v1.0.2.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('weather_特供版_v1.0.1.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v1.0.1</span>
                         <span class="version-date">2026-07-16</span>
                     </div>
-                    <div class="version-changes">完全重写版本，支持自定义API Key或使用Open-Meteo免费数据源，修复gzip压缩解析bug</div>
+                    <div class="version-changes">完全重写版本，支持自定义API Key或使用Open-Meteo免费数据源，修复gzip压缩解析bug<a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v1.0.1.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('weather_特供版_v1.0.0.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v1.0.0</span>
                         <span class="version-date">2026-07-16</span>
                     </div>
-                    <div class="version-changes">支持自定义API Key输入，修复控制台编码问题</div>
+                    <div class="version-changes">支持自定义API Key输入，修复控制台编码问题<a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v1.0.0.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('weather_特供版_v0.0.3.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v0.0.3</span>
                         <span class="version-date">2026-07-16</span>
                     </div>
-                    <div class="version-changes">修复Open-Meteo gzip压缩解析bug</div>
+                    <div class="version-changes">修复Open-Meteo gzip压缩解析bug<a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v0.0.3.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a></div>
                 </div>
                 <div class="version-item" onclick="requestDownload('weather_特供版_v0.0.2.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v0.0.2</span>
                         <span class="version-date">2026-07-15</span>
                     </div>
-                    <div class="version-changes">初始特供版，支持自定义API Key或使用Open-Meteo免费数据源</div>
+                    <div class="version-changes">初始特供版，支持自定义API Key或使用Open-Meteo免费数据源<a href="#" onclick="event.stopPropagation();requestDownload('weather_特供版_v0.0.2.exe')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载（无需密码）</a></div>
                 </div>
 
             </div>
@@ -667,7 +673,7 @@
         let failedAttempts = parseInt(localStorage.getItem("weather_dl_attempts") || "0");
         let lockoutEnd = parseInt(localStorage.getItem("weather_dl_lockout") || "0");
 
-        // Simple MD5 implementation
+        // Simple MD5 implementation (standard RFC 1321, Joseph Myers algorithm)
         function md5(string) {
             function md5cycle(x, k) {
                 var a = x[0], b = x[1], c = x[2], d = x[3];
@@ -705,7 +711,7 @@
                 c = ii(c, d, a, b, k[2], 15, 718787259); b = ii(b, c, d, a, k[9], 21, -343485551);
                 x[0] = add32(a, x[0]); x[1] = add32(b, x[1]); x[2] = add32(c, x[2]); x[3] = add32(d, x[3]);
             }
-            function cmn(q, a, b, x, s, t) { a = add32(add32(a, q), add32(x, t)); return add32((a << s) | (a >>> (32-s)), b); }
+            function cmn(q, a, b, x, s, t) { a = add32(add32(a, q), add32(x, t)); return add32((a << s) | (a >>> (32 - s)), b); }
             function ff(a, b, c, d, x, s, t) { return cmn((b & c) | ((~b) & d), a, b, x, s, t); }
             function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & (~d)), a, b, x, s, t); }
             function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
@@ -713,49 +719,39 @@
             function md51(s) {
                 var n = s.length, state = [1732584193, -271733879, -1732584194, 271733878], i;
                 for (i = 64; i <= n; i += 64) {
-                    md5cycle(state, md5blk(s.substring(i-64, i)));
+                    md5cycle(state, md5blk(s.substring(i - 64, i)));
                 }
-                s = s.substring(i-64);
-                var tail = [];
-                for (i = 0; i < s.length; i++) tail.push(s.charCodeAt(i));
-                tail.push(128);
-                while (tail.length % 64 !== 56) tail.push(0);
-                tail.push(n * 8);
-                md5cycle(state, md5blk(tile26(tail)));
+                s = s.substring(i - 64);
+                var tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                for (i = 0; i < s.length; i++) tail[i >> 2] |= s.charCodeAt(i) << ((i % 4) << 3);
+                tail[i >> 2] |= 0x80 << ((i % 4) << 3);
+                if (i > 55) {
+                    md5cycle(state, tail);
+                    for (i = 0; i < 16; i++) tail[i] = 0;
+                }
+                tail[14] = n * 8;
+                md5cycle(state, tail);
                 return state;
             }
             function md5blk(s) {
-                var md5blks = 16, i, r = new Array(md5blks);
-                for (i = 0; i < md5blks; i++) r[i] = s.charCodeAt(i*4) | (s.charCodeAt(i*4+1) << 8) | (s.charCodeAt(i*4+2) << 16) | (s.charCodeAt(i*4+3) << 24);
-                return r;
-            }
-            function md5blk(s) { var md5blks=16,i,r=new Array(md5blks); for(i=0;i<md5blks;i++)r[i]=s.charCodeAt(i*4)|(s.charCodeAt(i*4+1)<<8)|(s.charCodeAt(i*4+2)<<16)|(s.charCodeAt(i*4+3)<<24); return r; }
-            function md5hex(k) {
-                var hex_chr = '0123456789abcdef', s = '';
-                for (var j = 0; j < 4; j++) {
-                    s += hex_chr.charAt((k[j] >> 4) & 0x0f) + hex_chr.charAt(k[j] & 0x0f);
+                var md5blks = [], i;
+                for (i = 0; i < 64; i += 4) {
+                    md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 2) << 8) + (s.charCodeAt(i + 1) << 16) + (s.charCodeAt(i + 3) << 24);
                 }
+                return md5blks;
+            }
+            var hex_chr = '0123456789abcdef'.split('');
+            function rhex(n) {
+                var s = '', j = 0;
+                for (; j < 4; j++) s += hex_chr[(n >> (j * 8 + 4)) & 0x0F] + hex_chr[(n >> (j * 8)) & 0x0F];
                 return s;
+            }
+            function hex(x) {
+                for (var i = 0; i < x.length; i++) x[i] = rhex(x[i]);
+                return x.join('');
             }
             function add32(a, b) { return (a + b) & 0xFFFFFFFF; }
-            function tile8(k) {
-                var i, r = new Array(64);
-                for (i = 0; i < 64; i++) r[i] = k[Math.floor(i / 4)] & (255 << (24 - (i % 4) * 8));
-                return r;
-            }
-            function tile26(k) {
-                var i, r = new Array(16);
-                for (i = 0; i < 16; i++) r[i] = k[i] & 0xFFFFFFFF;
-                return r;
-            }
-            function md5hex2(k) {
-                var hex_chr = '0123456789abcdef', s = '';
-                for (var j = 0; j < 4; j++) {
-                    s += hex_chr.charAt((k[j] >> 4) & 0x0f) + hex_chr.charAt(k[j] & 0x0f);
-                }
-                return s;
-            }
-            return md5hex(md51(string));
+            return hex(md51(string));
         }
 
         function getRemainingLockout() {
@@ -798,6 +794,28 @@
         }
 
         var modalCloseTimer = null;
+
+        // 折叠/展开平台分组
+        function toggleGroup(group) {
+            group.classList.toggle("open");
+            if (group.classList.contains("open")) {
+                setTimeout(animateOnScroll, 60);
+            }
+        }
+
+        // 点击顶部跳转链接：展开对应分组并平滑滚动过去
+        function openGroup(e, id) {
+            e.preventDefault();
+            var group = document.getElementById(id);
+            var wasClosed = !group.classList.contains("open");
+            group.classList.add("open");
+            setTimeout(function() {
+                group.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (wasClosed) {
+                    setTimeout(animateOnScroll, 300);
+                }
+            }, 60);
+        }
 
         function closeModal() {
             var modal = document.getElementById("passwordModal");
