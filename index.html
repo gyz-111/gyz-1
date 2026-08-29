@@ -78,6 +78,13 @@
         .version-number { font-size: 20px; font-weight: 700; color: var(--secondary-color); }
         .version-date { font-size: 14px; color: var(--light-text); background: rgba(103,194,58,0.1); padding: 5px 15px; border-radius: 20px; }
         .version-changes { font-size: 15px; color: var(--light-text); line-height: 1.8; }
+        html { scroll-behavior: smooth; }
+        .platform-nav { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: -40px 0 60px; }
+        .platform-nav a { padding: 10px 28px; border-radius: 30px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); text-decoration: none; font-size: 15px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .platform-nav a:hover { border-color: var(--primary-color); background: var(--card-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .platform-group { margin-bottom: 70px; scroll-margin-top: 110px; }
+        .platform-group:last-child { margin-bottom: 0; }
+        .platform-title { text-align: center; font-size: 26px; font-weight: 600; margin-bottom: 35px; color: var(--secondary-color); }
         .usage { padding: 80px 0; }
         .usage-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
         .step { background: var(--card-bg); border-radius: 20px; padding: 40px 30px; text-align: center; border: 1px solid var(--border-color); transition: all 0.5s cubic-bezier(0.4,0,0.2,1); opacity: 0; transform: translateY(30px); }
@@ -372,6 +379,16 @@
                         <p>新增联网搜索城市功能，仅使用和风API</p>
                         <button onclick="requestDownload('Weather_API_v0.0.7.exe')">下载 v0.0.7</button>
                     </div>
+                    <div class="download-option">
+                        <h3>📱 Android v2.9.0（最新版）</h3>
+                        <p>美化版本，UI全面升级</p>
+                        <button onclick="requestDownload('Weather_API_安卓2.9.0.apk')">下载安卓 v2.9.0</button>
+                    </div>
+                    <div class="download-option">
+                        <h3>🧩 特供版 v3.0.0（最新版）</h3>
+                        <p>开源Open-Meteo数据源，无需密码</p>
+                        <button onclick="requestDownload('weather_特供版_v3.0.0.exe')">下载特供版</button>
+                    </div>
                 </div>
                 <p style="margin-top: 25px; font-size: 14px; color: rgba(255,255,255,0.5);">更多历史版本请查看下方「📦 全版本下载」</p>
             </div>
@@ -381,6 +398,13 @@
     <section class="versions" id="all-versions">
         <div class="container">
             <h2 class="section-title">📦 全版本下载</h2>
+            <div class="platform-nav">
+                <a href="#grp-windows">🖥️ Windows 完整版</a>
+                <a href="#grp-android">📱 安卓版</a>
+                <a href="#grp-special">🧩 特供版</a>
+            </div>
+            <div class="platform-group" id="grp-windows">
+                <h3 class="platform-title">🖥️ Windows 完整版</h3>
             <div class="versions-list">
                 <div class="version-item" onclick="requestDownload('Weather_API_v0.0.7.exe')">
                     <div class="version-header">
@@ -431,6 +455,19 @@
                     </div>
                     <div class="version-changes">初始版本，集成和风天气API，支持每日1000次调用限制</div>
                 </div>
+                <div class="version-item" onclick="requestDownload('weather 有图.exe')">
+                    <div class="version-header">
+                        <span class="version-number">Weather 有图版</span>
+                        <span class="version-date">旧版本</span>
+                    </div>
+                    <div class="version-changes">带有天气图标展示的旧版本，功能较精简</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="platform-group" id="grp-android">
+                <h3 class="platform-title">📱 安卓版</h3>
+                <div class="versions-list">
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.9.0.apk')">
                     <div class="version-header">
                         <span class="version-number">📱 安卓 v2.9.0（最新版）</span>
@@ -529,6 +566,12 @@
                     </div>
                     <div class="version-changes">安卓手机应用，支持城市和经纬度查询，实时天气、7天预报、天气预警</div>
                 </div>
+            </div>
+            </div>
+
+            <div class="platform-group" id="grp-special">
+                <h3 class="platform-title">🧩 特供版（免密码下载）</h3>
+                <div class="versions-list">
                 <div class="version-item" onclick="requestDownload('weather_特供版_v3.0.0.exe')">
                     <div class="version-header">
                         <span class="version-number">🖥️ 特供版 v3.0.0</span>
@@ -578,15 +621,11 @@
                     </div>
                     <div class="version-changes">初始特供版，支持自定义API Key或使用Open-Meteo免费数据源</div>
                 </div>
-                <div class="version-item" onclick="requestDownload('weather 有图.exe')">
-                    <div class="version-header">
-                        <span class="version-number">Weather 有图版</span>
-                        <span class="version-date">旧版本</span>
-                    </div>
-                    <div class="version-changes">带有天气图标展示的旧版本，功能较精简</div>
-                </div>
+
             </div>
         </div>
+            </div>
+            </div>
     </section>
 
     <footer>
