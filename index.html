@@ -79,9 +79,6 @@
         .version-date { font-size: 14px; color: var(--light-text); background: rgba(103,194,58,0.1); padding: 5px 15px; border-radius: 20px; }
         .version-changes { font-size: 15px; color: var(--light-text); line-height: 1.8; }
         html { scroll-behavior: smooth; }
-        .platform-nav { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: -40px 0 60px; }
-        .platform-nav a { padding: 10px 28px; border-radius: 30px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); text-decoration: none; font-size: 15px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
-        .platform-nav a:hover { border-color: var(--primary-color); background: var(--card-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
         .platform-group { margin-bottom: 70px; scroll-margin-top: 110px; }
         .platform-group:last-child { margin-bottom: 0; }
         .platform-title { text-align: center; font-size: 26px; font-weight: 600; margin-bottom: 35px; color: var(--secondary-color); cursor: pointer; user-select: none; transition: color 0.3s ease; }
@@ -404,11 +401,6 @@
     <section class="versions" id="all-versions">
         <div class="container">
             <h2 class="section-title">📦 全版本下载</h2>
-            <div class="platform-nav">
-                <a href="#grp-windows" onclick="openGroup(event, 'grp-windows')">🖥️ Windows 完整版</a>
-                <a href="#grp-android" onclick="openGroup(event, 'grp-android')">📱 安卓版</a>
-                <a href="#grp-special" onclick="openGroup(event, 'grp-special')">🧩 特供版</a>
-            </div>
             <div class="platform-group" id="grp-windows">
                 <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🖥️ Windows 完整版 <span class="toggle-icon">▼</span></h3>
             <div class="versions-list">
@@ -801,20 +793,6 @@
             if (group.classList.contains("open")) {
                 setTimeout(animateOnScroll, 60);
             }
-        }
-
-        // 点击顶部跳转链接：展开对应分组并平滑滚动过去
-        function openGroup(e, id) {
-            e.preventDefault();
-            var group = document.getElementById(id);
-            var wasClosed = !group.classList.contains("open");
-            group.classList.add("open");
-            setTimeout(function() {
-                group.scrollIntoView({ behavior: "smooth", block: "start" });
-                if (wasClosed) {
-                    setTimeout(animateOnScroll, 300);
-                }
-            }, 60);
         }
 
         function closeModal() {
