@@ -1,8 +1,8 @@
 {
-    "apk":  "weatherall/Weather_API_安卓2.9.0.apk",
+    "apk":  "weatherall/Weather_API_安卓2.10.0.apk",
     "force":  false,
-    "versionName":  "2.9.0",
-    "versionCode":  14,
-    "date":  "2026-08-28",
-    "desc":  "修复版本：UI全面升级，新增暗黑模式显示，优化卡片布局，移除广告/AQI/生活指数"
+    "versionName":  "2.10.0",
+    "versionCode":  15,
+    "date":  "2026-09-12",
+    "desc":  "修复版本：优化天气预报显示，默认显示7天预报，新增7/15天切换功能，改进UI布局"
 }
