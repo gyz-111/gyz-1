@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="card_bg">#16FFFFFF</color>
+    <color name="card_bg_strong">#26FFFFFF</color>
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#D0FFFFFF</color>
+    <color name="text_tertiary">#99FFFFFF</color>
+    <color name="accent_cyan">#67E8F9</color>
+    <color name="accent_orange">#FDBA74</color>
+    <color name="temp_high">#FB923C</color>
+    <color name="temp_low">#38BDF8</color>
+</resources>

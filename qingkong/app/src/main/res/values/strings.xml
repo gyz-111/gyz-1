@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">晴空天气</string>
+    <string name="loading">加载中…</string>
+    <string name="locating">定位中…</string>
+    <string name="footer">晴空天气 · 数据来自和风天气</string>
+    <string name="input_coord">输入坐标查询</string>
+    <string name="longitude">经度 (116.40)</string>
+    <string name="latitude">纬度 (39.90)</string>
+    <string name="search_hint">搜索全国任意城市</string>
+    <string name="hot_cities">热门城市</string>
+    <string name="city_not_found">未找到该地点</string>
+    <string name="select_city">选择城市</string>
+    <string name="no_location">无可用定位方式，已使用上次城市</string>
+    <string name="coord_invalid">坐标格式不正确</string>
+    <string name="locate_denied">未授权定位，可手动选择城市或输入坐标</string>
+</resources>

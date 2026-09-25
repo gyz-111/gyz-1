@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 第一层：天气渐变背景 -->
+    <View
+        android:id="@+id/bgView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_night" />
+
+    <!-- 第二层：动态天气场景动画 -->
+    <com.qingkong.weather.WeatherSceneView
+        android:id="@+id/sceneView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 第三层：内容 -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollRoot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="28dp">
+
+                <!-- 顶部栏 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvCity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/locating"
+                            android:textColor="@color/text_primary"
+                            android:textSize="27sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvUpdateTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text=""
+                            android:textColor="@color/text_tertiary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnLocate"
+                        style="@style/BtnPill"
+                        android:text="定位" />
+
+                    <TextView
+                        android:id="@+id/btnCity"
+                        style="@style/BtnPill"
+                        android:layout_marginStart="6dp"
+                        android:text="城市" />
+
+                    <TextView
+                        android:id="@+id/btnCoord"
+                        style="@style/BtnPill"
+                        android:layout_marginStart="6dp"
+                        android:text="坐标" />
+                </LinearLayout>
+
+                <!-- 当前天气 Hero 区 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@+id/iconHalo"
+                        android:layout_width="116dp"
+                        android:layout_height="116dp"
+                        android:background="@drawable/bg_halo_sunny">
+
+                        <TextView
+                            android:id="@+id/tvMainIcon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="🌤"
+                            android:textSize="58sp" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="sans-serif-light"
+                        android:includeFontPadding="false"
+                        android:text="--"
+                        android:textColor="@color/text_primary"
+                        android:textSize="132sp" />
+
+                    <TextView
+                        android:id="@+id/tvCond"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/loading"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/tvFeels"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text=""
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- 信息宫格 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout style="@style/InfoCell">
+                            <TextView style="@style/InfoLabel" android:text="体感温度" />
+                            <TextView android:id="@+id/infoValue0" style="@style/InfoValue" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/InfoCell">
+                            <TextView style="@style/InfoLabel" android:text="湿度" />
+                            <TextView android:id="@+id/infoValue1" style="@style/InfoValue" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/InfoCell">
+                            <TextView style="@style/InfoLabel" android:text="风况" />
+                            <TextView android:id="@+id/infoValue2" style="@style/InfoValue" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout style="@style/InfoCell">
+                            <TextView style="@style/InfoLabel" android:text="气压" />
+                            <TextView android:id="@+id/infoValue3" style="@style/InfoValue" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/InfoCell">
+                            <TextView style="@style/InfoLabel" android:text="能见度" />
+                            <TextView android:id="@+id/infoValue4" style="@style/InfoValue" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/InfoCell">
+                            <TextView style="@style/InfoLabel" android:text="紫外线" />
+                            <TextView android:id="@+id/infoValue5" style="@style/InfoValue" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 日出日落月相 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout style="@style/InfoCell">
+                        <TextView style="@style/InfoLabel" android:text="🌅 日出" />
+                        <TextView android:id="@+id/tvSunrise" style="@style/InfoValue" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/InfoCell">
+                        <TextView style="@style/InfoLabel" android:text="🌇 日落" />
+                        <TextView android:id="@+id/tvSunset" style="@style/InfoValue" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/InfoCell">
+                        <TextView style="@style/InfoLabel" android:text="🌙 月相" />
+                        <TextView android:id="@+id/tvMoon" style="@style/InfoValue" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 24小时预报卡片 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="3dp"
+                                android:layout_height="14dp"
+                                android:background="@drawable/bg_accent_bar" />
+
+                            <TextView
+                                style="@style/SectionTitle"
+                                android:layout_marginStart="8dp"
+                                android:text="24小时预报" />
+                        </LinearLayout>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:overScrollMode="never"
+                            android:scrollbars="none">
+
+                            <com.qingkong.weather.HourlyCurveView
+                                android:id="@+id/curveView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="168dp" />
+                        </HorizontalScrollView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 未来15天预报卡片 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="3dp"
+                                android:layout_height="14dp"
+                                android:background="@drawable/bg_accent_bar" />
+
+                            <TextView
+                                style="@style/SectionTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:text="未来15天预报" />
+
+                            <TextView
+                                android:id="@+id/btnToggleDays"
+                                android:layout_width="wrap_content"
+                                android:layout_height="28dp"
+                                android:background="@drawable/bg_pill_button"
+                                android:gravity="center"
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:text="显示7天"
+                                android:textColor="@color/text_primary"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/dailyList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:nestedScrollingEnabled="false"
+                            android:overScrollMode="never" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 底部信息 -->
+                <TextView
+                    android:id="@+id/tvFooter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/footer"
+                    android:textColor="@color/text_tertiary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>
