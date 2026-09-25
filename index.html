@@ -287,7 +287,21 @@
                 </div>
                 <div class="version-item" style="cursor: default;">
                     <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.9.0（最新版）</span>
+                        <span class="version-number">📱 晴空天气 v1.2.3（新版）</span>
+                        <span class="version-date">2026-09</span>
+                    </div>
+                    <div class="version-changes">独立安卓天气应用：动态天气场景动画、24小时温度曲线、7/15天预报（含日出日落月相）、城市搜索定位、下拉刷新</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v2.10.0（最新版）</span>
+                        <span class="version-date">2026-09-12</span>
+                    </div>
+                    <div class="version-changes">修复版本：优化天气预报显示，默认显示7天预报，新增7/15天切换功能，改进UI布局</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v2.9.0</span>
                         <span class="version-date">2026-08-28</span>
                     </div>
                     <div class="version-changes">美化版本：UI全面升级，更精美的渐变色、更大的温度显示</div>
@@ -385,9 +399,14 @@
                         <button onclick="requestDownload('Weather_API_v0.0.7.exe')">下载 v0.0.7</button>
                     </div>
                     <div class="download-option">
-                        <h3>📱 Android v2.9.0（最新版）</h3>
-                        <p>美化版本，UI全面升级</p>
-                        <button onclick="requestDownload('Weather_API_安卓2.9.0.apk')">下载安卓 v2.9.0</button>
+                        <h3>📱 Android v2.10.0（最新版）</h3>
+                        <p>修复版本，默认7天预报，新增7/15天切换</p>
+                        <button onclick="requestDownload('Weather_API_安卓2.10.0.apk')">下载安卓 v2.10.0</button>
+                    </div>
+                    <div class="download-option">
+                        <h3>🌤️ 晴空天气 v1.2.3</h3>
+                        <p>独立天气应用，动态场景动画，4.4MB</p>
+                        <button onclick="requestDownload('晴空天气_v1.2.3.apk')">下载晴空天气</button>
                     </div>
                     <div class="download-option">
                         <h3>🧩 特供版 v3.0.0（最新版）</h3>
@@ -465,12 +484,32 @@
             </div>
             </div>
 
+            <div class="platform-group" id="grp-qingkong">
+                <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🌤️ 晴空天气 <span class="toggle-icon">▼</span></h3>
+                <div class="versions-list">
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.2.3.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.2.3</span>
+                        <span class="version-date">2026-09</span>
+                    </div>
+                    <div class="version-changes">独立安卓天气应用：动态天气场景动画、24小时温度曲线、7/15天预报（含日出日落月相）、城市搜索定位、下拉刷新<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                </div>
+            </div>
+
             <div class="platform-group" id="grp-android">
                 <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">📱 安卓版 <span class="toggle-icon">▼</span></h3>
                 <div class="versions-list">
+                <div class="version-item" onclick="requestDownload('Weather_API_安卓2.10.0.apk')">
+                    <div class="version-header">
+                        <span class="version-number">📱 安卓 v2.10.0（最新版）</span>
+                        <span class="version-date">2026-09-12</span>
+                    </div>
+                    <div class="version-changes">修复版本：优化天气预报显示，默认显示7天预报，新增7/15天切换功能，改进UI布局<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.10.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
                 <div class="version-item" onclick="requestDownload('Weather_API_安卓2.9.0.apk')">
                     <div class="version-header">
-                        <span class="version-number">📱 安卓 v2.9.0（最新版）</span>
+                        <span class="version-number">📱 安卓 v2.9.0</span>
                         <span class="version-date">2026-08-28</span>
                     </div>
                     <div class="version-changes">美化版本：UI全面升级，更精美的渐变色、更大的温度显示<a href="#" onclick="event.stopPropagation();requestDownload('Weather_API_安卓2.9.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
