@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晴空天气下载 - Weather_API</title>
+    <meta name="description" content="晴空天气安卓应用全版本下载：v1.2.1 至 v1.2.4，动态天气场景动画。">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Weather<span>_API</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="windows.html">Windows</a></li>
+                    <li><a href="android.html">安卓版</a></li>
+                    <li><a href="qingkong.html" class="active">晴空天气</a></li>
+                    <li><a href="special.html">特供版</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-head">
+            <div class="container">
+                <span class="head-icon">🌤️</span>
+                <h1>晴空天气</h1>
+                <p>独立安卓天气应用：实时天气动态场景动画、24 小时温度曲线、7/15 天预报（含日出日落月相）、城市搜索定位、下拉刷新。下载需输入密码。</p>
+            </div>
+        </section>
+
+        <section class="page-list">
+            <div class="container">
+                <div class="versions-list">
+                    <div class="version-item" onclick="requestDownload('晴空天气_v1.2.4.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.2.4（最新版）</span>
+                            <span class="version-date">2026-09</span>
+                        </div>
+                        <div class="version-changes">日出日落修复，4.6MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.4.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                    </div>
+                    <div class="version-item" onclick="requestDownload('晴空天气_v1.2.3.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.2.3</span>
+                            <span class="version-date">2026-09</span>
+                        </div>
+                        <div class="version-changes">emoji 桌面图标，4.6MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                    </div>
+                    <div class="version-item" onclick="requestDownload('晴空天气_v1.2.2.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.2.2</span>
+                            <span class="version-date">2026-09</span>
+                        </div>
+                        <div class="version-changes">桌面图标构图修复，4.5MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                    </div>
+                    <div class="version-item" onclick="requestDownload('晴空天气_v1.2.1.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.2.1</span>
+                            <span class="version-date">2026-09</span>
+                        </div>
+                        <div class="version-changes">修复闪退 + 渐变图标，4.5MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                    </div>
+                </div>
+                <div class="back-wrap">
+                    <a href="index.html" class="back-link">&larr; 返回首页</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="windows.html">Windows</a>
+                <a href="android.html">安卓版</a>
+                <a href="qingkong.html">晴空天气</a>
+                <a href="special.html">特供版</a>
+            </div>
+            <p>&copy; 2026 Weather_API. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-box">
+            <h3>🔒 请输入下载密码</h3>
+            <p class="modal-desc">完整版程序受密码保护，请输入正确密码以继续下载</p>
+            <p class="file-name" id="modalFileName"></p>
+            <input type="password" id="passwordInput" placeholder="请输入密码..." autocomplete="off">
+            <div class="modal-btns">
+                <button class="modal-btn-cancel" onclick="closeModal()">取消</button>
+                <button class="modal-btn-confirm" onclick="confirmPassword()">确认下载</button>
+            </div>
+            <div class="modal-error" id="modalError"></div>
+            <div class="modal-lockout" id="modalLockout"></div>
+        </div>
+    </div>
+
+    <script src="js/download.js"></script>
+</body>
+</html>
