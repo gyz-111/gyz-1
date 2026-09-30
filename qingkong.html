@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>晴空天气下载 - Weather_API</title>
-    <meta name="description" content="晴空天气安卓应用全版本下载：v1.2.1 至 v1.2.4，动态天气场景动画。">
+    <meta name="description" content="晴空天气安卓应用全版本下载：v1.2.1 至 v1.4.0，动态天气图标、登录验证与文件完整性校验。">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -35,9 +35,23 @@
         <section class="page-list">
             <div class="container">
                 <div class="versions-list">
+                    <div class="version-item" onclick="requestDownload('晴空天气_v1.4.0.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.0（最新版）</span>
+                            <span class="version-date">2026-09-30</span>
+                        </div>
+                        <div class="version-changes">安全增强版：① 新增登录验证，需输入授权账号密码后才可使用，不开放注册，账号密码全部以 SHA-256 哈希存储，本地与服务器均无明文；② 校验清单托管于 Gitee / GitHub，Gitee 优先、GitHub 兜底、断网自动使用本地缓存；③ 每次启动自动校验 APK 签名证书与内置文件哈希，防止二次打包和文件篡改，校验不通过将拒绝运行，6.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                    </div>
+                    <div class="version-item" onclick="requestDownload('晴空天气_v1.3.5.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.3.5</span>
+                            <span class="version-date">2026-09-27</span>
+                        </div>
+                        <div class="version-changes">天气主图标全面升级为 Meteocons 风格动态 GIF：晴 / 多云 / 阴 / 雨 / 雪 / 雾 / 雷等昼夜 20+ 个动画，图标底座改为随天气实时切换的渐变光晕，安装包体积增大至 6.32MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.3.5.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                    </div>
                     <div class="version-item" onclick="requestDownload('晴空天气_v1.3.4.apk')">
                         <div class="version-header">
-                            <span class="version-number">🌤️ 晴空天气 v1.3.4（最新版）</span>
+                            <span class="version-number">🌤️ 晴空天气 v1.3.4</span>
                             <span class="version-date">2026-09-27</span>
                         </div>
                         <div class="version-changes">图标里的 ☀️ emoji 缩小，4.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.3.4.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
