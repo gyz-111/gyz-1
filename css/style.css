@@ -207,3 +207,61 @@ footer { background: rgba(0,0,0,0.3); padding: 50px 0; text-align: center; borde
     .download-options { flex-direction: column; align-items: center; }
     .section-title { font-size: 30px; }
 }
+
+/* ===== 下载页增强：统计条 / 搜索 / 卡片操作区 / 返回顶部 ===== */
+.page-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.stat-chip { font-size: 13px; color: var(--light-text); background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); padding: 6px 16px; border-radius: 20px; }
+.stat-chip b { color: var(--secondary-color); font-weight: 700; }
+
+.version-search { max-width: 520px; margin: 0 auto 26px; position: relative; }
+.version-search input {
+    width: 100%; padding: 13px 18px 13px 46px; border-radius: 14px;
+    border: 1px solid var(--border-color); background: var(--card-bg);
+    color: var(--text-color); font-size: 15px; outline: none;
+    transition: border-color 0.3s, background 0.3s;
+}
+.version-search input:focus { border-color: var(--secondary-color); background: var(--card-hover); }
+.version-search input::placeholder { color: rgba(255,255,255,0.35); }
+.version-search .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 16px; opacity: 0.5; pointer-events: none; }
+
+.version-item.latest {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                linear-gradient(120deg, rgba(74,144,217,0.55), rgba(103,194,58,0.55)) border-box;
+}
+.version-item.latest:hover {
+    background: linear-gradient(var(--card-hover), var(--card-hover)) padding-box,
+                linear-gradient(120deg, rgba(74,144,217,0.85), rgba(103,194,58,0.85)) border-box;
+}
+.badge-latest { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-left: 8px; vertical-align: 2px; color: #fff; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); box-shadow: 0 2px 10px rgba(103,194,58,0.35); letter-spacing: 1px; }
+
+.version-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.version-foot.end { justify-content: flex-end; }
+.size-chip { font-size: 13px; color: var(--light-text); background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); padding: 5px 14px; border-radius: 20px; white-space: nowrap; }
+.dl-btn {
+    display: inline-block; text-decoration: none; font-size: 14px; font-weight: 700;
+    color: #fff; background: linear-gradient(45deg, var(--secondary-color), #529b2e);
+    padding: 10px 22px; border-radius: 12px; transition: all 0.3s ease; white-space: nowrap;
+}
+.dl-btn:hover { box-shadow: 0 5px 20px rgba(103,194,58,0.4); transform: translateY(-2px); }
+
+.no-result { display: none; text-align: center; color: var(--light-text); font-size: 15px; padding: 40px 0; }
+.no-result.show { display: block; }
+
+.back-top {
+    position: fixed; right: 24px; bottom: 24px; width: 46px; height: 46px;
+    border-radius: 50%; border: 1px solid var(--border-color);
+    background: rgba(26,26,46,0.85); backdrop-filter: blur(10px);
+    color: var(--secondary-color); font-size: 20px; cursor: pointer; z-index: 1500;
+    opacity: 0; visibility: hidden; transform: translateY(12px);
+    transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.back-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-top:hover { background: rgba(103,194,58,0.2); border-color: var(--secondary-color); }
+
+@media (max-width: 768px) {
+    .version-item { padding: 22px 18px; }
+    .version-item:hover { transform: none; }
+    .back-top { right: 16px; bottom: 16px; }
+    .page-stats { gap: 8px; }
+}

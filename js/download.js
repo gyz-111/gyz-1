@@ -217,3 +217,42 @@
         window.addEventListener('resize', animateOnScroll);
     });
 })();
+
+/* Weather_API 下载站 - 页面增强：版本搜索 + 返回顶部 */
+(function () {
+    'use strict';
+
+    /* ---------- 版本搜索（存在搜索框时启用） ---------- */
+    var searchInput = document.querySelector('.version-search input');
+    var items = Array.prototype.slice.call(document.querySelectorAll('.versions-list .version-item'));
+    var noResult = document.querySelector('.no-result');
+    if (searchInput && items.length) {
+        searchInput.addEventListener('input', function () {
+            var kw = searchInput.value.trim().toLowerCase();
+            var visible = 0;
+            items.forEach(function (item) {
+                var text = (item.getAttribute('data-keywords') || '') + ' ' + item.textContent;
+                var hit = !kw || text.toLowerCase().indexOf(kw) !== -1;
+                item.style.display = hit ? '' : 'none';
+                if (hit) { visible++; item.classList.add('animate'); }
+            });
+            if (noResult) { noResult.classList.toggle('show', visible === 0); }
+        });
+    }
+
+    /* ---------- 返回顶部（存在版本列表时启用） ---------- */
+    if (document.querySelector('.versions-list')) {
+        var btn = document.createElement('button');
+        btn.className = 'back-top';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', '返回顶部');
+        btn.innerHTML = '&uarr;';
+        btn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        document.body.appendChild(btn);
+        var toggle = function () { btn.classList.toggle('show', window.scrollY > 400); };
+        window.addEventListener('scroll', toggle, { passive: true });
+        toggle();
+    }
+})();
