@@ -287,10 +287,10 @@
                 </div>
                 <div class="version-item" style="cursor: default;">
                     <div class="version-header">
-                        <span class="version-number">📱 晴空天气 v1.2.3（新版）</span>
-                        <span class="version-date">2026-09</span>
+                        <span class="version-number">🌤️ 晴空天气 v1.4.5（最新版）</span>
+                        <span class="version-date">2026-10-04</span>
                     </div>
-                    <div class="version-changes">独立安卓天气应用：动态天气场景动画、24小时温度曲线、7/15天预报（含日出日落月相）、城市搜索定位、下拉刷新</div>
+                    <div class="version-changes">新增软件自动更新（Gitee 优先 / GitHub 兜底，启动静默检查，支持强制更新与下载进度）；移除文件完整性校验，保留登录验证。v1.4.4：AI 生活建议修复。v1.4.3：修复完整性校验误报。v1.4.0：安全增强版——登录验证 + 文件完整性校验（SHA-256 哈希，Gitee/GitHub 双源）</div>
                 </div>
                 <div class="version-item" style="cursor: default;">
                     <div class="version-header">
@@ -404,9 +404,9 @@
                         <button onclick="requestDownload('Weather_API_安卓2.10.0.apk')">下载安卓 v2.10.0</button>
                     </div>
                     <div class="download-option">
-                        <h3>🌤️ 晴空天气 v1.2.3</h3>
-                        <p>独立天气应用，动态场景动画，4.4MB</p>
-                        <button onclick="requestDownload('晴空天气_v1.2.3.apk')">下载晴空天气</button>
+                        <h3>🌤️ 晴空天气 v1.4.5（最新版）</h3>
+                        <p>登录验证 + AI 生活建议，新增软件自动更新，6.33MB</p>
+                        <button onclick="requestDownload('晴空天气_v1.4.5.apk')">下载晴空天气</button>
                     </div>
                     <div class="download-option">
                         <h3>🧩 特供版 v3.0.0（最新版）</h3>
@@ -487,12 +487,75 @@
             <div class="platform-group" id="grp-qingkong">
                 <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🌤️ 晴空天气 <span class="toggle-icon">▼</span></h3>
                 <div class="versions-list">
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.5.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.5（最新版）</span>
+                        <span class="version-date">2026-10-04</span>
+                    </div>
+                    <div class="version-changes">新增软件自动更新（Gitee 优先 / GitHub 兜底，启动静默检查 + 手动检查，支持强制更新、下载进度、APK 校验）；移除文件完整性校验，保留登录验证，6.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.5.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.4.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.4</span>
+                        <span class="version-date">2026-10-04</span>
+                    </div>
+                    <div class="version-changes">AI 生活建议修复（JSON 容错、system 角色拆分、自动取消、max_tokens 提升），6.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.4.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.3.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.3</span>
+                        <span class="version-date">2026-10-04</span>
+                    </div>
+                    <div class="version-changes">修复完整性校验误报（证书校验改告警），6.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.2.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.2</span>
+                        <span class="version-date">2026-10-04</span>
+                    </div>
+                    <div class="version-changes">精简版：保留登录验证，移除签名证书与文件哈希启动校验，6.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.1.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.1</span>
+                        <span class="version-date">2026-10-04</span>
+                    </div>
+                    <div class="version-changes">完整性校验稳定性优化，6.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.0.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.0</span>
+                        <span class="version-date">2026-09-30</span>
+                    </div>
+                    <div class="version-changes">安全增强版：登录验证（SHA-256 哈希）+ 文件完整性校验，Gitee/GitHub 双源，6.33MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.0.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.2.4.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.2.4</span>
+                        <span class="version-date">2026-09</span>
+                    </div>
+                    <div class="version-changes">日出日落修复，4.6MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.4.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
                 <div class="version-item" onclick="requestDownload('晴空天气_v1.2.3.apk')">
                     <div class="version-header">
                         <span class="version-number">🌤️ 晴空天气 v1.2.3</span>
                         <span class="version-date">2026-09</span>
                     </div>
-                    <div class="version-changes">独立安卓天气应用：动态天气场景动画、24小时温度曲线、7/15天预报（含日出日落月相）、城市搜索定位、下拉刷新<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                    <div class="version-changes">emoji 桌面图标，4.6MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.3.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.2.2.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.2.2</span>
+                        <span class="version-date">2026-09</span>
+                    </div>
+                    <div class="version-changes">桌面图标构图修复，4.5MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.2.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.2.1.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.2.1</span>
+                        <span class="version-date">2026-09</span>
+                    </div>
+                    <div class="version-changes">修复闪退 + 渐变图标，4.5MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.2.1.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
                 </div>
                 </div>
             </div>
@@ -808,10 +871,16 @@
             return 0;
         }
 
+        function getDlPath(filename) {
+            if (filename.includes("特供版")) return "weatherall/" + filename;
+            if (filename.includes("晴空天气")) return "qingkong/" + filename;
+            return "weatherall/" + filename;
+        }
+
         function requestDownload(filename) {
             // 特供版无需密码
             if (filename.includes("特供版")) {
-                window.location.href = "weatherall/" + filename;
+                window.location.href = getDlPath(filename);
                 return;
             }
             pendingFilename = filename;
@@ -869,7 +938,7 @@
                 localStorage.setItem("weather_dl_lockout", "0");
                 errorEl.textContent = "";
                 closeModal();
-                window.location.href = "weatherall/" + pendingFilename;
+                window.location.href = getDlPath(pendingFilename);
             } else {
                 // Wrong password
                 failedAttempts++;
