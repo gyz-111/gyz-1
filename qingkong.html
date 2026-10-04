@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>晴空天气下载 - Weather_API</title>
-    <meta name="description" content="晴空天气安卓应用全版本下载：v1.2.1 至 v1.4.0，动态天气图标、登录验证与文件完整性校验。">
+    <meta name="description" content="晴空天气安卓应用全版本下载：v1.2.1 至 v1.4.5，动态天气图标、登录验证与文件完整性校验。">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -30,9 +30,9 @@
                 <h1>晴空天气</h1>
                 <p>独立安卓天气应用：天气渐变背景、24 小时温度曲线、7/15 天预报（含日出日落月相）、今日生活指数、城市搜索定位、下拉刷新。下载需输入密码。</p>
                 <div class="page-stats">
-                    <span class="stat-chip"><b>11</b> 个版本</span>
-                    <span class="stat-chip">最新 <b>v1.4.0</b></span>
-                    <span class="stat-chip">更新于 <b>2026-09-30</b></span>
+                    <span class="stat-chip"><b>16</b> 个版本</span>
+                    <span class="stat-chip">最新 <b>v1.4.5</b></span>
+                    <span class="stat-chip">更新于 <b>2026-10-04</b></span>
                     <span class="stat-chip">🔒 需下载密码</span>
                 </div>
             </div>
@@ -45,9 +45,64 @@
                     <input type="text" placeholder="搜索版本或功能关键词，如：登录、图标、1.3 ..." autocomplete="off">
                 </div>
                 <div class="versions-list">
-                    <div class="version-item latest" data-keywords="最新 latest 安全 登录 校验 完整性 防篡改 哈希 签名" onclick="requestDownload('晴空天气_v1.4.0.apk')">
+                    <div class="version-item latest" data-keywords="最新 latest 登录 简化 校验 移除" onclick="requestDownload('晴空天气_v1.4.5.apk')">
                         <div class="version-header">
-                            <span class="version-number">🌤️ 晴空天气 v1.4.0<span class="badge-latest">最新版</span></span>
+                            <span class="version-number">🌤️ 晴空天气 v1.4.5<span class="badge-latest">最新版</span></span>
+                            <span class="version-date">2026-10-04</span>
+                        </div>
+                        <div class="version-changes">简化登录流程：移除文件完整性校验（签名证书/assets 哈希阻断逻辑），保留账号密码哈希登录验证；登录提示文案由「正在联网校验…」改为「正在登录…」，体验更清晰</div>
+                        <div class="version-foot">
+                            <span class="size-chip">📦 6.33MB</span>
+                            <a href="#" class="dl-btn" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.5.apk')">⬇ 下载 APK</a>
+                        </div>
+                    </div>
+                    <div class="version-item" data-keywords="AI 修复 生活建议 json 容错 取消" onclick="requestDownload('晴空天气_v1.4.4.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.4</span>
+                            <span class="version-date">2026-10-04</span>
+                        </div>
+                        <div class="version-changes">AI 生活建议全面修复：① JSON 解析逐层容错，模型返回异常不再崩溃；② system/user 角色拆分，输出更稳定；③ 重试间隔 2s→3s，避免服务压力；④ 页面销毁自动取消未完成请求；⑤ max_tokens 提升至 1000，JSON 不再被截断</div>
+                        <div class="version-foot">
+                            <span class="size-chip">📦 6.33MB</span>
+                            <a href="#" class="dl-btn" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.4.apk')">⬇ 下载 APK</a>
+                        </div>
+                    </div>
+                    <div class="version-item" data-keywords="校验 误报 修复 证书 阻断" onclick="requestDownload('晴空天气_v1.4.3.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.3</span>
+                            <span class="version-date">2026-10-04</span>
+                        </div>
+                        <div class="version-changes">修复完整性校验误报：签名证书校验由硬阻断改为仅告警（日志记录 + Toast 提示），assets 文件哈希仍保留为硬门禁；解决重新打包/重签后证书指纹变化导致的"检测到文件已损坏"误弹窗问题</div>
+                        <div class="version-foot">
+                            <span class="size-chip">📦 6.33MB</span>
+                            <a href="#" class="dl-btn" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.3.apk')">⬇ 下载 APK</a>
+                        </div>
+                    </div>
+                    <div class="version-item" data-keywords="登录 删除 校验 精简" onclick="requestDownload('晴空天气_v1.4.2.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.2</span>
+                            <span class="version-date">2026-10-04</span>
+                        </div>
+                        <div class="version-changes">精简版：保留登录验证（账号密码 SHA-256 哈希比对，Gitee 优先 / GitHub 兜底 / 本地缓存），移除 APK 签名证书与内置文件哈希的启动校验，界面更流畅</div>
+                        <div class="version-foot">
+                            <span class="size-chip">📦 6.33MB</span>
+                            <a href="#" class="dl-btn" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.2.apk')">⬇ 下载 APK</a>
+                        </div>
+                    </div>
+                    <div class="version-item" data-keywords="校验 修复 完整性" onclick="requestDownload('晴空天气_v1.4.1.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.1</span>
+                            <span class="version-date">2026-10-04</span>
+                        </div>
+                        <div class="version-changes">完整性校验稳定性优化：cities.json 哈希流式读取（避免双份内存占用），校验失败提示文案统一，阻断界面交互更友好</div>
+                        <div class="version-foot">
+                            <span class="size-chip">📦 6.33MB</span>
+                            <a href="#" class="dl-btn" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.1.apk')">⬇ 下载 APK</a>
+                        </div>
+                    </div>
+                    <div class="version-item" data-keywords="安全 登录 校验 完整性 防篡改 哈希 签名" onclick="requestDownload('晴空天气_v1.4.0.apk')">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.0</span>
                             <span class="version-date">2026-09-30</span>
                         </div>
                         <div class="version-changes">安全增强版：① 新增登录验证，需输入授权账号密码后才可使用，不开放注册，账号密码全部以 SHA-256 哈希存储，本地与服务器均无明文；② 校验清单托管于 Gitee / GitHub，Gitee 优先、GitHub 兜底、断网自动使用本地缓存；③ 每次启动自动校验 APK 签名证书与内置文件哈希，防止二次打包和文件篡改，校验不通过将拒绝运行</div>
