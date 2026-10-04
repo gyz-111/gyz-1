@@ -1,8 +1,8 @@
 {
-    "apk":  "qingkong/晴空天气_v1.4.5.apk",
-    "force":  false,
-    "versionName":  "1.4.5",
-    "versionCode":  19,
-    "date":  "2026-10-04",
-    "desc":  "晴空天气 v1.4.5：优化天气预报显示，新增7/15天切换，改进UI布局"
+  "versionCode": 20,
+  "versionName": "1.4.6",
+  "date": "2026-10-04",
+  "force": false,
+  "desc": "新增软件自动更新：启动静默检查 + 点击底部手动检查，Gitee 优先 / GitHub 兜底，支持强制更新、下载进度显示与 APK 安全校验",
+  "apk": "qingkong/晴空天气_v1.4.6.apk"
 }
