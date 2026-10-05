@@ -287,7 +287,14 @@
                 </div>
                 <div class="version-item" style="cursor: default;">
                     <div class="version-header">
-                        <span class="version-number">🌤️ 晴空天气 v1.4.6（最新版）</span>
+                        <span class="version-number">🌤️ 晴空天气 v1.4.7（最新版）</span>
+                        <span class="version-date">2026-10-05</span>
+                    </div>
+                    <div class="version-changes">修复检查更新 HTTP 404（Gitee 仓库分支 main→master）；AI 服务 429 限流优化为指数退避重试（5s/15s/30s）并增加友好提示；修复 5xx 错误退避策略</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.6</span>
                         <span class="version-date">2026-10-04</span>
                     </div>
                     <div class="version-changes">新增软件自动更新：启动静默检查 + 点击底部手动检查，Gitee 优先 / GitHub 兜底，支持强制更新、下载进度显示与 APK 安全校验。v1.4.5：移除文件完整性校验，保留登录验证。v1.4.4：AI 生活建议修复。v1.4.0：安全增强版——登录验证 + 文件完整性校验（SHA-256 哈希，Gitee/GitHub 双源）</div>
@@ -404,9 +411,9 @@
                         <button onclick="requestDownload('Weather_API_安卓2.10.0.apk')">下载安卓 v2.10.0</button>
                     </div>
                     <div class="download-option">
-                        <h3>🌤️ 晴空天气 v1.4.6（最新版）</h3>
-                        <p>登录验证 + AI 生活建议 + 软件自动更新，6.34MB</p>
-                        <button onclick="requestDownload('晴空天气_v1.4.6.apk')">下载晴空天气</button>
+                        <h3>🌤️ 晴空天气 v1.4.7（最新版）</h3>
+                        <p>修复检查更新404 + AI限流退避优化，6.34MB</p>
+                        <button onclick="requestDownload('晴空天气_v1.4.7.apk')">下载晴空天气</button>
                     </div>
                     <div class="download-option">
                         <h3>🧩 特供版 v3.0.0（最新版）</h3>
@@ -487,9 +494,16 @@
             <div class="platform-group" id="grp-qingkong">
                 <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🌤️ 晴空天气 <span class="toggle-icon">▼</span></h3>
                 <div class="versions-list">
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.7.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.7（最新版）</span>
+                        <span class="version-date">2026-10-05</span>
+                    </div>
+                    <div class="version-changes">修复检查更新 HTTP 404（Gitee 分支 main→master）；AI 429 限流指数退避重试（5s/15s/30s）+ 友好提示；5xx 退避策略修复，6.34MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.7.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
                 <div class="version-item" onclick="requestDownload('晴空天气_v1.4.6.apk')">
                     <div class="version-header">
-                        <span class="version-number">🌤️ 晴空天气 v1.4.6（最新版）</span>
+                        <span class="version-number">🌤️ 晴空天气 v1.4.6</span>
                         <span class="version-date">2026-10-04</span>
                     </div>
                     <div class="version-changes">新增软件自动更新：启动静默检查 + 点击底部手动检查，Gitee 优先 / GitHub 兜底，支持强制更新、下载进度显示与 APK 安全校验，6.34MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.6.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
@@ -879,8 +893,10 @@
         }
 
         function getDlPath(filename) {
-            if (filename.includes("特供版")) return "weatherall/" + filename;
-            if (filename.includes("晴空天气")) return "qingkong/" + filename;
+            // 晴空天气系列：仓库默认分支为 master，APK 存放在 qingkong/ 目录
+            if (filename.includes("晴空天气"))
+                return "https://gitee.com/gyz-1111/gyz-1/raw/master/qingkong/" + encodeURIComponent(filename);
+            // 特供版 / 安卓版：走 weatherall/ 目录（相对路径，由 Gitee Pages 服务）
             return "weatherall/" + filename;
         }
 

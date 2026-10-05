@@ -1,8 +1,8 @@
 {
-  "versionCode": 20,
-  "versionName": "1.4.6",
-  "date": "2026-10-04",
+  "versionCode": 21,
+  "versionName": "1.4.7",
+  "date": "2026-10-05",
   "force": false,
-  "desc": "新增软件自动更新：启动静默检查 + 点击底部手动检查，Gitee 优先 / GitHub 兜底，支持强制更新、下载进度显示与 APK 安全校验",
-  "apk": "qingkong/晴空天气_v1.4.6.apk"
+  "desc": "修复检查更新 HTTP 404（Gitee 分支 main→master）；AI 服务 429 限流优化为指数退避重试（5s/15s/30s）并增加友好提示；修复 5xx 错误退避策略",
+  "apk": "qingkong/晴空天气_v1.4.7.apk"
 }
