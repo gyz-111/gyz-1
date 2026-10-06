@@ -1,8 +1,8 @@
 {
-  "versionCode": 21,
-  "versionName": "1.4.7",
-  "date": "2026-10-05",
+  "versionCode": 22,
+  "versionName": "1.4.8",
+  "date": "2026-10-06",
   "force": false,
-  "desc": "修复检查更新 HTTP 404（Gitee 分支 main→master）；AI 服务 429 限流优化为指数退避重试（5s/15s/30s）并增加友好提示；修复 5xx 错误退避策略",
-  "apk": "qingkong/晴空天气_v1.4.7.apk"
+  "desc": "修复应用图标显示不居中问题；AI 服务限流(HTTP 429)时自动切换备用模型(agnes-2.5-flash)重试，提升生活指数生成成功率；错误提示增加 HTTP 错误码显示并精简文案",
+  "apk": "qingkong/晴空天气_v1.4.8.apk"
 }

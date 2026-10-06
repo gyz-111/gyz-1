@@ -287,7 +287,14 @@
                 </div>
                 <div class="version-item" style="cursor: default;">
                     <div class="version-header">
-                        <span class="version-number">🌤️ 晴空天气 v1.4.7（最新版）</span>
+                        <span class="version-number">🌤️ 晴空天气 v1.4.8（最新版）</span>
+                        <span class="version-date">2026-10-06</span>
+                    </div>
+                    <div class="version-changes">修复应用图标显示不居中问题；AI 服务限流（HTTP 429）时自动切换备用模型（agnes-2.5-flash）重试，提升生活指数生成成功率；错误提示增加 HTTP 错误码显示并精简文案</div>
+                </div>
+                <div class="version-item" style="cursor: default;">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.7</span>
                         <span class="version-date">2026-10-05</span>
                     </div>
                     <div class="version-changes">修复检查更新 HTTP 404（Gitee 仓库分支 main→master）；AI 服务 429 限流优化为指数退避重试（5s/15s/30s）并增加友好提示；修复 5xx 错误退避策略</div>
@@ -411,9 +418,9 @@
                         <button onclick="requestDownload('Weather_API_安卓2.10.0.apk')">下载安卓 v2.10.0</button>
                     </div>
                     <div class="download-option">
-                        <h3>🌤️ 晴空天气 v1.4.7（最新版）</h3>
-                        <p>修复检查更新404 + AI限流退避优化，6.34MB</p>
-                        <button onclick="requestDownload('晴空天气_v1.4.7.apk')">下载晴空天气</button>
+                        <h3>🌤️ 晴空天气 v1.4.8（最新版）</h3>
+                        <p>图标居中修复 + AI限流自动切换备用模型，6.34MB</p>
+                        <button onclick="requestDownload('晴空天气_v1.4.8.apk')">下载晴空天气</button>
                     </div>
                     <div class="download-option">
                         <h3>🧩 特供版 v3.0.0（最新版）</h3>
@@ -494,9 +501,16 @@
             <div class="platform-group" id="grp-qingkong">
                 <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🌤️ 晴空天气 <span class="toggle-icon">▼</span></h3>
                 <div class="versions-list">
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.8.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.8（最新版）</span>
+                        <span class="version-date">2026-10-06</span>
+                    </div>
+                    <div class="version-changes">修复应用图标显示不居中；AI 限流（HTTP 429）自动切换备用模型 agnes-2.5-flash 重试；错误提示增加 HTTP 错误码并精简文案，6.34MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.8.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
                 <div class="version-item" onclick="requestDownload('晴空天气_v1.4.7.apk')">
                     <div class="version-header">
-                        <span class="version-number">🌤️ 晴空天气 v1.4.7（最新版）</span>
+                        <span class="version-number">🌤️ 晴空天气 v1.4.7</span>
                         <span class="version-date">2026-10-05</span>
                     </div>
                     <div class="version-changes">修复检查更新 HTTP 404（Gitee 分支 main→master）；AI 429 限流指数退避重试（5s/15s/30s）+ 友好提示；5xx 退避策略修复，6.34MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.7.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
