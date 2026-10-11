@@ -286,11 +286,18 @@
                     </div>
                 </div>
                 <div class="version-item" style="cursor: default;">
-                    <div class="version-header">
-                        <span class="version-number">🌤️ 晴空天气 v1.4.8（最新版）</span>
-                        <span class="version-date">2026-10-06</span>
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.9（最新版）</span>
+                            <span class="version-date">2026-10-11</span>
+                        </div>
+                        <div class="version-changes">停用 AI 服务功能（生活指数切换回本地规则生成，不再请求 AI API）；更换 AGNess API Key 备用</div>
                     </div>
-                    <div class="version-changes">修复应用图标显示不居中问题；AI 服务限流（HTTP 429）时自动切换备用模型（agnes-2.5-flash）重试，提升生活指数生成成功率；错误提示增加 HTTP 错误码显示并精简文案</div>
+                    <div class="version-item" style="cursor: default;">
+                        <div class="version-header">
+                            <span class="version-number">🌤️ 晴空天气 v1.4.8</span>
+                            <span class="version-date">2026-10-06</span>
+                        </div>
+                        <div class="version-changes">修复应用图标显示不居中问题；AI 服务限流（HTTP 429）时自动切换备用模型（agnes-2.5-flash）重试，提升生活指数生成成功率；错误提示增加 HTTP 错误码显示并精简文案</div>
                 </div>
                 <div class="version-item" style="cursor: default;">
                     <div class="version-header">
@@ -418,9 +425,9 @@
                         <button onclick="requestDownload('Weather_API_安卓2.10.0.apk')">下载安卓 v2.10.0</button>
                     </div>
                     <div class="download-option">
-                        <h3>🌤️ 晴空天气 v1.4.8（最新版）</h3>
-                        <p>图标居中修复 + AI限流自动切换备用模型，6.34MB</p>
-                        <button onclick="requestDownload('晴空天气_v1.4.8.apk')">下载晴空天气</button>
+                        <h3>🌤️ 晴空天气 v1.4.9（最新版）</h3>
+                        <p>停用 AI 服务，切换回本地规则生成生活指数；更换 AGNess API Key，6.34MB</p>
+                        <button onclick="requestDownload('晴空天气_v1.4.9.apk')">下载晴空天气</button>
                     </div>
                     <div class="download-option">
                         <h3>🧩 特供版 v3.0.0（最新版）</h3>
@@ -501,9 +508,16 @@
             <div class="platform-group" id="grp-qingkong">
                 <h3 class="platform-title" onclick="toggleGroup(this.parentElement)">🌤️ 晴空天气 <span class="toggle-icon">▼</span></h3>
                 <div class="versions-list">
+                <div class="version-item" onclick="requestDownload('晴空天气_v1.4.9.apk')">
+                    <div class="version-header">
+                        <span class="version-number">🌤️ 晴空天气 v1.4.9（最新版）</span>
+                        <span class="version-date">2026-10-11</span>
+                    </div>
+                    <div class="version-changes">停用 AI 服务功能（生活指数切换回本地规则生成，不再请求 AI API）；更换 AGNess API Key 备用，6.34MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.9.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>
+                </div>
                 <div class="version-item" onclick="requestDownload('晴空天气_v1.4.8.apk')">
                     <div class="version-header">
-                        <span class="version-number">🌤️ 晴空天气 v1.4.8（最新版）</span>
+                        <span class="version-number">🌤️ 晴空天气 v1.4.8</span>
                         <span class="version-date">2026-10-06</span>
                     </div>
                     <div class="version-changes">修复应用图标显示不居中；AI 限流（HTTP 429）自动切换备用模型 agnes-2.5-flash 重试；错误提示增加 HTTP 错误码并精简文案，6.34MB<a href="#" onclick="event.stopPropagation();requestDownload('晴空天气_v1.4.8.apk')" style="color:#67c23a;margin-top:6px;display:inline-block;">⬇ 点击下载</a></div>

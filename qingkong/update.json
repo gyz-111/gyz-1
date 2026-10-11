@@ -1,8 +1,8 @@
 {
-  "versionCode": 22,
-  "versionName": "1.4.8",
-  "date": "2026-10-06",
+  "versionCode": 23,
+  "versionName": "1.4.9",
+  "date": "2026-10-11",
   "force": false,
-  "desc": "修复应用图标显示不居中问题；AI 服务限流(HTTP 429)时自动切换备用模型(agnes-2.5-flash)重试，提升生活指数生成成功率；错误提示增加 HTTP 错误码显示并精简文案",
-  "apk": "qingkong/晴空天气_v1.4.8.apk"
+  "desc": "停用 AI 服务功能（生活指数切换回本地规则生成，不再请求 AI API）；更换 AGNess API Key 备用",
+  "apk": "qingkong/晴空天气_v1.4.9.apk"
 }
