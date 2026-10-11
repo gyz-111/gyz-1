@@ -1,8 +1,8 @@
 {
-  "versionCode": 23,
-  "versionName": "1.4.9",
+  "versionCode": 24,
+  "versionName": "1.4.10",
   "date": "2026-10-11",
   "force": false,
-  "desc": "停用 AI 服务功能（生活指数切换回本地规则生成，不再请求 AI API）；更换 AGNess API Key 备用",
-  "apk": "qingkong/晴空天气_v1.4.9.apk"
+  "desc": "重新启用 AGNess AI 服务：生活指数由 AI 智能生成，替代本地规则引擎；更换 AGNess API Key",
+  "apk": "qingkong/晴空天气_v1.4.10.apk"
 }
